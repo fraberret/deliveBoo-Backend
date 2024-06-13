@@ -9,5 +9,6 @@ class Restaurant extends Model
 {
 
     use HasFactory;
-    protected $fillable = ['*'];
+
+    protected $fillable = ['name', 'slug', 'telephone_number', 'logo', 'address', 'piva',];
 }

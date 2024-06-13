@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+// use Illuminate\Support\Facades\Storage;
+
 
 class RegisteredUserController extends Controller
 {
@@ -31,12 +34,12 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        /* dd($request); */
+        // dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'string', 'min:5', 'max:50'],
+            'restaurant_name' => ['required', 'unique:restaurants,name', 'string', 'min:5', 'max:50'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
             'telephone_number' => ['nullable', 'string', 'size:13'],
             'logo' => ['nullable', 'image', 'max:500'],
@@ -49,13 +52,15 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $restaurant = new Restaurant;
-        $restaurant->name = $request->restaurant_name;
-        /* 'name' => $request->restaurant_name,
+        Restaurant::create([
+            'name' => $request->restaurant_name,
+            'slug' => Str::slug($request->restaurant_name, '-'),
             'address' => $request->address,
             'telephone_number' => $request->telephone_number,
-            'logo' => $request->logo,
-            'piva' => $request->piva, */
+            // 'logo' =>  Storage::put('uploads', $request->logo),
+            'piva' => $request->piva,
+            'user_id' => $user->id, // set relationship ???
+        ]);
 
 
         event(new Registered($user));
