@@ -28,7 +28,9 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $restaurant = Restaurant::where('user_id', $request->user()->id)->get();
+        $restaurant = Restaurant::where('user_id', $request->user()->id)->first();
+
+        //dd($restaurant->name);
 
 
         $request->user()->fill($request->validated());
@@ -41,6 +43,8 @@ class ProfileController extends Controller
             'piva' => ['nullable', 'string', 'size:11']
         ]);
         // $restaurant->update($resturant_val_data);
+
+        $restaurant->update($resturant_val_data);
 
 
         if ($request->user()->isDirty('email')) {
