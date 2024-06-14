@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Restaurant;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -35,8 +37,8 @@ class ProfileController extends Controller
 
         $request->user()->fill($request->validated());
 
-        $resturant_val_data =  $request->validate([
-            // 'restaurant_name' => ['required', 'unique:restaurants,name', 'min:5', 'max:50'],
+        $restaurant_val_data =  $request->validate([
+            'name' => ['required', 'min:5', 'max:50', Rule::unique('restaurants')->ignore($restaurant->id)],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
             'telephone_number' => ['nullable', 'string', 'size:13'],
             'logo' => ['nullable', 'image', 'max:500'],
@@ -44,7 +46,12 @@ class ProfileController extends Controller
         ]);
         // $restaurant->update($resturant_val_data);
 
-        $restaurant->update($resturant_val_data);
+        $restaurant_val_data['name'] = $request->restaurant_name;
+        $restaurant_val_data['slug'] = Str::slug($request->restaurant_name, '-');
+
+
+
+        $restaurant->update($restaurant_val_data);
 
 
         if ($request->user()->isDirty('email')) {
