@@ -11,7 +11,7 @@ class UpdateDishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|min:5|max:100|unique:dishes,name,' . $this->dish->id,
+            'description' => 'nullable',
+            'price' => 'decimal:0,9999.99',
+            'visible' => 'nullable',
+            'cover_image' => 'nullable|image|max:500'
         ];
     }
 }

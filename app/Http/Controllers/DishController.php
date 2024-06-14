@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -23,7 +25,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dishes.create');
     }
 
     /**
@@ -31,7 +33,21 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->name, '-');
+
+        if ($request->has('cover_image')) {
+
+            $img_path = Storage::put('uploads', $request->cover_image);
+            $val_data['preview_image'] = $img_path;
+        }
+
+
+        Dish::create($val_data);
+
+        return redirect()->route('admin.dishes.index')->with('message', "Dish created successfully");
     }
 
     /**
@@ -55,7 +71,25 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->name, '-');
+
+        if ($request->has('cover_image')) {
+
+            if ($dish->cover_image) {
+                // delete the old image
+                Storage::delete($dish->cover_image);
+            }
+
+            $img_path = Storage::put('uploads', $request->cover_image);
+            $val_data['cover_image'] = $img_path;
+        }
+
+
+        $dish->update($val_data);
+
+        return redirect()->route('admin.dishes.index')->with('message', "Dish updated successfully");
     }
 
     /**
@@ -63,6 +97,12 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        if ($dish->cover_image) {
+            Storage::delete($dish->cover_image);
+        }
+
+        $dish->delete();
+
+        return redirect()->route('admin.dishes.index')->with('message', 'Dish deleted successfully.');
     }
 }
