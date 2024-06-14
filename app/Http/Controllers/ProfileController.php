@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Restaurant;
 
 class ProfileController extends Controller
 {
@@ -16,6 +17,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -26,7 +28,20 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $restaurant = Restaurant::where('user_id', $request->user()->id)->get();
+
+
         $request->user()->fill($request->validated());
+
+        $resturant_val_data =  $request->validate([
+            // 'restaurant_name' => ['required', 'unique:restaurants,name', 'min:5', 'max:50'],
+            'address' => ['nullable', 'string', 'min:5', 'max:255'],
+            'telephone_number' => ['nullable', 'string', 'size:13'],
+            'logo' => ['nullable', 'image', 'max:500'],
+            'piva' => ['nullable', 'string', 'size:11']
+        ]);
+        // $restaurant->update($resturant_val_data);
+
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

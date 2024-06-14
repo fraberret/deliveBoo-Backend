@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-secondary">
-            {{ __('Profile Information') }}
+            {{ __('Restaurant Information') }}
         </h2>
 
         <p class="mt-1 text-muted">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Update your restaurnt's profile information and email address.") }}
         </p>
     </header>
 
@@ -57,6 +57,46 @@
                 @endif
             </div>
             @endif
+        </div>
+
+        <div class="mb-2">
+            <label for="restaurant_name">Restaurant Name</label>
+            <input class="form-control" type="text" name="restaurant_name" id="restaurant_name" autocomplete="restaurant_name" value="{{old('restaurant_name', $user->restaurant->name)}}" required autofocus>
+            @error('restaurant_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('restaurant_name')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="telephone_number">Telephone Number</label>
+            <input class="form-control" type="text" name="telephone_number" id="telephone_number" autocomplete="telephone_number" value="{{old('telephone_number', $user->restaurant->telephone_number)}}" required autofocus>
+            @error('telephone_number')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('telephone_number')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="address">Address</label>
+            <input class="form-control" type="text" name="address" id="address" autocomplete="address" value="{{old('address', $user->restaurant->address)}}" required autofocus>
+            @error('address')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('address')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="piva">P.Iva</label>
+            <input class="form-control" type="text" name="piva" id="piva" autocomplete="piva" value="{{old('piva', $user->restaurant->piva)}}" required autofocus>
+            @error('piva')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('piva')}}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="d-flex align-items-center gap-4">
