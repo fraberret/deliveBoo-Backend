@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 // use Illuminate\Support\Facades\Storage;
 
 
@@ -52,15 +53,24 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        if ($request->has('logo')) {
+
+            $img_path = Storage::put('uploads', $request->logo);
+            // $validated['preview_image'] = $img_path;
+        }
+
         Restaurant::create([
             'name' => $request->restaurant_name,
             'slug' => Str::slug($request->restaurant_name, '-'),
             'address' => $request->address,
             'telephone_number' => $request->telephone_number,
-            // 'logo' =>  Storage::put('uploads', $request->logo),
+            'logo' =>  $img_path,
             'piva' => $request->piva,
             'user_id' => $user->id, // set relationship ???
         ]);
+
+
+
 
 
         event(new Registered($user));

@@ -129,7 +129,7 @@
                             </div>
 
                             {{-- Restaurant Logo --}}
-                            {{-- <div class="mb-4 row">
+                            <div class="mb-4 row">
                                 <label for="logo"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Restaurant logo') }}</label>
 
@@ -144,7 +144,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
 
                             {{-- Restaurant P.iva --}}
                             <div class="mb-4 row">
