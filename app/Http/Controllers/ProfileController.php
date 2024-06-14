@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
@@ -46,8 +47,20 @@ class ProfileController extends Controller
         ]);
         // $restaurant->update($resturant_val_data);
 
+        if ($request->has('logo')) {
+
+
+            if ($restaurant->logo) {
+                // delete the old image
+                Storage::delete($restaurant->logo);
+            }
+
+            $img_path = Storage::put('uploads', $request->logo);
+        }
+
         $restaurant_val_data['name'] = $request->restaurant_name;
         $restaurant_val_data['slug'] = Str::slug($request->restaurant_name, '-');
+        $restaurant_val_data['logo'] = $img_path;
 
 
 

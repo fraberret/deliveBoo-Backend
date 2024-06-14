@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -93,6 +93,22 @@
             @error('piva')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+        </div>
+
+        <div class="mb-2 d-flex">
+            @if (Str::startsWith($user->restaurant->logo, 'https://'))
+                <img width="140" src="{{ $user->restaurant->logo }}" alt="">
+            @else
+                <img width="140" src="{{ asset('storage/' . $user->restaurant->logo) }}" alt="">
+            @endif
+
+            <div class="input_file">
+                <label for="logo">P.Iva</label>
+                <input class="form-control" type="file" name="logo" id="logo" autocomplete="logo">
+                @error('logo')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
         <div class="d-flex align-items-center gap-4">
