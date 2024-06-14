@@ -14,7 +14,7 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::orderByDesc('id')->paginate(8);
-        
+
         return view('admin.dishes.index', compact('dishes'));
     }
 
@@ -39,7 +39,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**
@@ -47,7 +47,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**

@@ -28,7 +28,10 @@
                                 </td>
                                 <td>{{ $dish->price }}</td>
                                 <td>{{ $dish->visible }}</td>
-                                <td>Edit/View/Delete</td>
+                                <td>
+                                    <a href="{{ route('admin.dishes.show', $dish) }}">👁‍🗨</a>
+                                    <a href="{{ route('admin.dishes.edit', $dish) }}">🖋</a>
+
                             </tr>
                         @endforeach
                     @else
