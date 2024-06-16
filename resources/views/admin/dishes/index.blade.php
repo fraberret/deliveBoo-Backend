@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="mb-4 d-flex justify-content-center">
+        <div class="my-5 d-flex justify-content-center">
             <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary text-white w-25">Add New Dish</a>
         </div>
         <div class="table-responsive">
-            <table class="table table-secondary">
-                <thead>
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Cover Image</th>
@@ -20,22 +20,22 @@
                     @if ($dishes)
                         @foreach ($dishes as $dish)
                             <tr class="">
-                                <td scope="row">{{ $dish->name }}</td>
+                                <td>{{ $dish->name }}</td>
                                 <td>
                                     @if (Str::startsWith($dish->cover_image, 'https://'))
-                                        <img src="{{ $dish->cover_image }}" alt="" width="100">
+                                        <img src="{{ $dish->cover_image }}" alt="{{ $dish->name }}" width="100">
                                     @else
-                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt=""
+                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="{{ $dish->name }}"
                                             width="100">
                                     @endif
                                 </td>
-                                <td>{{ $dish->price }}</td>
-                                <td>{{ $dish->visible }}</td>
+                                <td>{{ $dish->price }}€</td>
+                                <td>{{ $dish->visible ? 'Visible' : 'Hidden' }}</td>
                                 <td>
-                                    <div class="d-flex align-items-center gap-1">
+                                    <div class="d-flex gap-2">
                                         <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish) }}"><i
                                                 class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a class="btn btn-primary" href="{{ route('admin.dishes.edit', $dish) }}"><i
+                                        <a class="btn btn-success" href="{{ route('admin.dishes.edit', $dish) }}"><i
                                                 class="fa fa-pencil" aria-hidden="true"></i></a>
                                         <!-- Modal trigger button -->
                                         <button type="button" class="btn btn-danger btn-m" data-bs-toggle="modal"
@@ -89,7 +89,7 @@
                         @endforeach
                     @else
                         <tr class="">
-                            <td scope="row" colspan="5">Nothing found</td>
+                            <td scope="row" class="text-center" colspan="5">Nothing found</td>
                         </tr>
                     @endif
                 </tbody>
