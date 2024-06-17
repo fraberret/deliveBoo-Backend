@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('admin.partials.session-message')
         <div class="banner">
             <div class="text">
                 <h6>all dishes</h6>
@@ -26,15 +27,11 @@
                             <div class="image_circle">
                                 @if ($dish->cover_image)
                                     @if (Str::startsWith($dish->cover_image, 'https://'))
-
                                         <img src="{{ $dish->cover_image }}" alt="cover image">
-
                                     @elseif (Str::startsWith($dish->cover_image, '/img'))
-
                                         <img src="{{ asset($dish->cover_image) }}" alt="cover image">
-
                                     @else
-                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">   
+                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
                                     @endif
                                 @endif
                             </div>
