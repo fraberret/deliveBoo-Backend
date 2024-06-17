@@ -12,7 +12,7 @@
                 </h2>
 
                 <div class="logo_laravel ps-2">
-                    <img src="{{ asset('img/logo-deliveboo.png') }}" width="200px" alt="app logo">
+                    <img src="{{ asset('img/logo-deliveboo-big.png') }}" width="200px" alt="app logo">
                 </div>
             </div>
 
