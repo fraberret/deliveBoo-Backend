@@ -76,6 +76,7 @@ class DishSeeder extends Seeder
             $newDish->cover_image = $faker->imageUrl(400, 200, 'food');
             $newDish->description = $dish['description'];
             $newDish->price = $dish['price'];
+            $newDish->restaurant_id = 1;
             $newDish->save();
         }
     }

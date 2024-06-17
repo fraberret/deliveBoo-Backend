@@ -56,11 +56,12 @@ class ProfileController extends Controller
             }
 
             $img_path = Storage::put('uploads', $request->logo);
+            $restaurant_val_data['logo'] = $img_path;
         }
 
         $restaurant_val_data['name'] = $request->restaurant_name;
         $restaurant_val_data['slug'] = Str::slug($request->restaurant_name, '-');
-        $restaurant_val_data['logo'] = $img_path;
+
 
 
 
