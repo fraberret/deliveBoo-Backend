@@ -51,7 +51,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h6>description:</h6>
 
-                            <a class="btn btn-light" href="{{ route('admin.dishes.index') }}">Go Back</a>
+                            <a class="btn btn-light goback_btn" href="{{ route('admin.dishes.index') }}">
+                                <img src="{{ asset('img/icons/go-back.png') }}" alt="">
+                            </a>
 
                         </div>
                         <p>

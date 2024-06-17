@@ -73,7 +73,6 @@
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
     position: relative;
 
-
     .dish {
         padding: .7rem 0;
         display: flex;
@@ -152,6 +151,39 @@
                     color: $boo-primary;
                     text-transform: uppercase;
                     margin-bottom: 1rem;
+                }
+
+                .goback_btn {
+                    background-color: $boo-darker;
+                    border-color: $boo-gray-800;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 3.2rem;
+                    height: 3.2rem;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 1;
+                    overflow: hidden;
+
+                    &::before {
+                        position: absolute;
+                        transform: translate(-80%, 80%);
+                        content: '';
+                        background-color: $boo-primary;
+                        width: 4rem;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                        z-index: -1;
+                        transition: transform .25s ease, filter .25s ease;
+                        filter: blur(5px);
+                    }
+
+                    &:hover::before {
+                        transform: translate(0%, 0%);
+                        filter: blur(0px);
+                    }
+
                 }
 
                 p {
@@ -266,6 +298,7 @@
 .dish_card .bottom {
     background-color: $boo-darker;
     width: 100%;
+    min-height: 250px;
     z-index: -1;
     transform: translateY(-10rem);
     // transform: translateY(-2rem);
