@@ -59,7 +59,7 @@ class DishSeeder extends Seeder
             ],
             [
                 "name" => "Fettuccine Alfredo",
-                "description" => "Pasta in a rich and creamy parmesan sauce.",
+                "description" => "Pasta in a rich and creamy parmesan sauce.This delightful dish features wide, flat fettuccine noodles generously coated in a luxurious Alfredo sauce made from butter, heavy cream, and finely grated Parmesan cheese.",
                 "price" => 11.00
             ],
             [

@@ -58,7 +58,7 @@ class DishController extends Controller
     {
         $userId = Auth::id();
         $restaurant = Restaurant::where('user_id', $userId)->first();
-        return view('admin.dishes.show', compact('dish'));
+        return view('admin.dishes.show', compact('dish', 'restaurant'));
     }
 
     /**
