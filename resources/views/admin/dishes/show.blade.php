@@ -1,21 +1,100 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container d-flex mt-3">
-        <div class="col-6">
-            @if (Str::startsWith($dish->cover_image, 'https://'))
-                <img src="{{ $dish->cover_image }}" alt="">
-            @else
-                <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
-            @endif
+    <div class="container">
+        <div class="banner">
+            <div class="text">
+                <h6>dish</h6>
+                <h2>
+                    {{ $dish->name }}
+                </h2>
+            </div>
+            <div class="actions single_dish">
+                <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn edit">
+                    <img class="white_icon" width="22" src="{{ asset('img/icons/edit.png') }}" alt="edit icon">
+                    <img class="purple_icon" width="22" src="{{ asset('img/icons/edit-purple.png') }}" alt="edit icon">
+                    <span>Edit</span>
+                </a>
+                {{-- modal trigger --}}
+                <a type="button" class="btn delete" data-bs-toggle="modal" data-bs-target="#modal-{{ $dish->id }}">
+                    <img width="21" src="{{ asset('img/icons/trash.png') }}" alt="trash icon">
+                    <span>Delete</span>
+                </a>
+            </div>
         </div>
-        <div class="col-6">
-            <div class="metaData">
-                <div><strong>Name:</strong> {{ $dish->name }}</div>
-                <p>{{ $dish->description }}</p>
-                <div><strong>Price:</strong> {{ $dish->price }}</div>
-                <div><strong>Visible:</strong> {{ $dish->visible ? '✔' : '❌' }}</div>
+        {{-- modal --}}
+        @include('admin.partials.delete-modal')
 
+        <div class="dish_card">
+            <div class="dish">
+                <div class="image">
+                    <div class="image_circle">
+                        @if ($dish->cover_image)
+                            @if (Str::startsWith($dish->cover_image, 'https://'))
+                                <img src="{{ $dish->cover_image }}" alt="cover image">
+                            @else
+                                <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
+                            @endif
+                        @endif
+                    </div>
+                    @if ($dish->price)
+                        <div class="price_circle">
+                            <div class="price">
+                                <h7> {{ $dish->price }}</h7>
+                                <span> &#8364;</span>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="text">
+                    <div class="description">
+                        <h6>description:</h6>
+                        <p>
+                            {{ $dish->description }}
+                            {{-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum nulla ipsum laborum molestiae rerum
+                            harum dolorum ad totam debitis dolor! Magnam iusto suscipit assumenda porro obcaecati hic sunt
+                            aliquid impedit. --}}
+                        </p>
+                    </div>
+                    <div class="visible">
+                        @if ($dish->visible)
+                            <div class="visible_circle"></div>
+                            <small>Visible Online</small>
+                        @else
+                            <div class="non_visible_circle"></div>
+                            <small>Not Visible Online...</small>
+                        @endif
+                    </div>
+                    <div class="info_box">
+                        <div class="restaurant">
+                            <div class="restaurant_image">
+                                {{-- <img src="" alt=""> --}}
+                            </div>
+                            <div class="restaurant_text">
+                                <small>Restaurant</small>
+                                <h6>{{ $restaurant->name }}</h6>
+                            </div>
+                        </div>
+                        <div class="ratings">
+                            <div class="stars">
+                                <img src="{{ asset('img/star-full.png') }}" alt="">
+                                <img src="{{ asset('img/star-full.png') }}" alt="">
+                                <img src="{{ asset('img/star-full.png') }}" alt="">
+                                <img src="{{ asset('img/star-full.png') }}" alt="">
+                                <img src="{{ asset('img/star-empty.png') }}" alt="">
+                            </div>
+                            <small>4.8</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="ingredients">
+                    <h6>ingredients:</h6>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam quae unde a hic et perspiciatis
+                        similique ex suscipit consequuntur beatae molestias velit, praesentium distinctio voluptas
+                        aspernatur saepe, alias dolor at.</p>
+                </div>
             </div>
         </div>
     </div>

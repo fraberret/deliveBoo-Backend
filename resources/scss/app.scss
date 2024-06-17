@@ -1,1 +1,12 @@
-@import '~bootstrap/scss/bootstrap'
+@use '~bootstrap/scss/bootstrap';
+@use './partials/header';
+@use './partials/banner';
+@use './partials/dishes';
+@use './partials/dish';
+@use './partials/variables' as *;
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: $boo-darker;
+}

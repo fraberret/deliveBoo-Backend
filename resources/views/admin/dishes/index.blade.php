@@ -2,101 +2,76 @@
 
 @section('content')
     <div class="container">
-        <div class="mb-4 d-flex justify-content-center">
-            <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary text-white w-25">Add New Dish</a>
+        <div class="banner">
+            <div class="text">
+                <h6>all dishes</h6>
+                <h2>Manage your dishes here!</h2>
+            </div>
+            <div class="actions">
+                <a href="{{ route('admin.dishes.create') }}" class="btn">Add New Dish</a>
+            </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-secondary">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Cover Image</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Visibility</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if ($dishes)
-                        @foreach ($dishes as $dish)
-                            <tr class="">
-                                <td scope="row">{{ $dish->name }}</td>
-                                <td>
+        <div class="dishes">
+            <div class="cols_heading">
+                <div class="image"></div>
+                <div class="name">Name</div>
+                <div class="price">Price</div>
+                <div class="visible">Visibility</div>
+                <div class="actions"></div>
+            </div>
+            <div class="rows">
+                @forelse ($dishes as $dish)
+                    <div class="dish">
+                        <div class="image">
+                            <div class="image_circle">
+                                @if ($dish->cover_image)
                                     @if (Str::startsWith($dish->cover_image, 'https://'))
-                                        <img src="{{ $dish->cover_image }}" alt="" width="100">
+                                        <img src="{{ $dish->cover_image }}" alt="cover image">
                                     @else
-                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt=""
-                                            width="100">
+                                        <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
                                     @endif
-                                </td>
-                                <td>{{ $dish->price }}</td>
-                                <td>{{ $dish->visible }}</td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-1">
-                                        <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish) }}"><i
-                                                class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a class="btn btn-primary" href="{{ route('admin.dishes.edit', $dish) }}"><i
-                                                class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <!-- Modal trigger button -->
-                                        <button type="button" class="btn btn-danger btn-m" data-bs-toggle="modal"
-                                            data-bs-target="#modal-{{ $dish->id }}">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-
-                                    <!-- Modal Body -->
-                                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                    <div class="modal fade" id="modal-{{ $dish->id }}" tabindex="-1"
-                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                                        aria-labelledby="modalTitle-{{ $dish->id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
-                                            role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalTitle-{{ $dish->id }}">
-                                                        Delete dish
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete this dish:
-                                                    {{ $dish->name }}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <form action="{{ route('admin.dishes.destroy', $dish) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">
-                                                            Confirm
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Optional: Place to the bottom of scripts -->
-
-                                </td>
-
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr class="">
-                            <td scope="row" colspan="5">Nothing found</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="name">{{ $dish->name }}</div>
+                        <div class="price">
+                            @if ($dish->price)
+                                {{ $dish->price }} &#8364;
+                            @else
+                                <span>add a price...</span>
+                            @endif
+                        </div>
+                        <div class="visible">
+                            @if ($dish->visible)
+                                <div class="visible_circle"></div>
+                            @else
+                                <div class="non_visible_circle"></div>
+                            @endif
+                        </div>
+                        <div class="actions">
+                            <a href="{{ route('admin.dishes.show', $dish) }}"><img width="23"
+                                    src="{{ asset('img/icons/eye.png') }}" alt="eye icon"></a>
+                            <a href="{{ route('admin.dishes.edit', $dish) }}"><img width="22"
+                                    src="{{ asset('img/icons/edit.png') }}" alt="edit icon"></a>
+                            <!-- Modal Trigger -->
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#modal-{{ $dish->id }}">
+                                <img width="21" src="{{ asset('img/icons/trash.png') }}" alt="trash icon">
+                            </a>
+                            {{-- Modal --}}
+                            @include('admin.partials.delete-modal')
+                        </div>
+                    </div>
+                @empty
+                    <div class="no_dishes">
+                        No Dishes To Show...
+                    </div>
+                @endforelse
+            </div>
+            <div class="bottom">
+                <div class="pagination">
+                    {{ $dishes->links('pagination::bootstrap-5') }}
+                </div>
+            </div>
         </div>
-
-        {{ $dishes->links('pagination::bootstrap-5') }}
-
     </div>
 @endsection
