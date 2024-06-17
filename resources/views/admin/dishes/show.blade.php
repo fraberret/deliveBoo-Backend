@@ -29,12 +29,12 @@
             <div class="dish">
                 <div class="image">
                     <div class="image_circle">
-                        @if ($dish->cover_image)
-                            @if (Str::startsWith($dish->cover_image, 'https://'))
-                                <img src="{{ $dish->cover_image }}" alt="cover image">
-                            @else
-                                <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
-                            @endif
+                        @if (Str::startsWith($dish->cover_image, 'https://'))
+                            <img src="{{ $dish->cover_image }}" alt="cover image">
+                        @elseif (Str::startsWith($dish->cover_image, '/img'))
+                            <img src="{{ asset($dish->cover_image) }}" alt="cover image">
+                        @else
+                            <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
                         @endif
                     </div>
                     @if ($dish->price)
