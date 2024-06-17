@@ -23,7 +23,7 @@
             <div class="rows">
                 @forelse ($dishes as $dish)
                     <div class="dish">
-                        <div class="image">
+                        <a href="{{ route('admin.dishes.show', $dish) }}" class="image">
                             <div class="image_circle">
                                 @if ($dish->cover_image)
                                     @if (Str::startsWith($dish->cover_image, 'https://'))
@@ -35,7 +35,7 @@
                                     @endif
                                 @endif
                             </div>
-                        </div>
+                        </a>
                         <div class="name">{{ $dish->name }}</div>
                         <div class="price">
                             @if ($dish->price)

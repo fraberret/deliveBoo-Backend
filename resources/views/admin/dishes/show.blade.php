@@ -48,7 +48,12 @@
                 </div>
                 <div class="text">
                     <div class="description">
-                        <h6>description:</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6>description:</h6>
+
+                            <a class="btn btn-light" href="{{ route('admin.dishes.index') }}">Go Back</a>
+
+                        </div>
                         <p>
                             {{ $dish->description }}
                             {{-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum nulla ipsum laborum molestiae rerum
@@ -91,9 +96,7 @@
             <div class="bottom">
                 <div class="ingredients">
                     <h6>ingredients:</h6>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam quae unde a hic et perspiciatis
-                        similique ex suscipit consequuntur beatae molestias velit, praesentium distinctio voluptas
-                        aspernatur saepe, alias dolor at.</p>
+                    <p>{{ $dish->ingredients }}</p>
                 </div>
             </div>
         </div>
