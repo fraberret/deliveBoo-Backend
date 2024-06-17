@@ -17,7 +17,10 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::orderByDesc('id')->paginate(8);
+        $userId = Auth::id();
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+
+        $dishes = Dish::orderByDesc('id')->where('restaurant_id', $restaurant->id)->paginate(8);
 
         return view('admin.dishes.index', compact('dishes'));
     }
@@ -40,13 +43,22 @@ class DishController extends Controller
 
         $val_data['slug'] = Str::slug($request->name, '-');
 
+        $userId = Auth::id();
+
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+
+        $val_data['restaurant_id'] = $restaurant->id;
+
+
+
         if ($request->has('cover_image')) {
 
             $img_path = Storage::put('uploads', $request->cover_image);
             $val_data['cover_image'] = $img_path;
         }
+        $dish  = Dish::create($val_data);
 
-        Dish::create($val_data);
+
 
         return redirect()->route('admin.dishes.index')->with('message', "Dish created successfully");
     }
