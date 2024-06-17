@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateDishRequest;
 use App\Models\Dish;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Restaurant;
 
 class DishController extends Controller
 {
@@ -41,9 +43,8 @@ class DishController extends Controller
         if ($request->has('cover_image')) {
 
             $img_path = Storage::put('uploads', $request->cover_image);
-            $val_data['preview_image'] = $img_path;
+            $val_data['cover_image'] = $img_path;
         }
-
 
         Dish::create($val_data);
 
@@ -55,6 +56,8 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
+        $userId = Auth::id();
+        $restaurant = Restaurant::where('user_id', $userId)->first();
         return view('admin.dishes.show', compact('dish'));
     }
 
