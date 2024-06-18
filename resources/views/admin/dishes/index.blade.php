@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', "All Dishes")
+@section('title', 'All Dishes')
 
 @section('content')
     <div class="container">
@@ -49,8 +49,10 @@
                         <div class="visible">
                             @if ($dish->visible)
                                 <div class="visible_circle"></div>
+                                <small>Visible Online</small>
                             @else
                                 <div class="non_visible_circle"></div>
+                                <small>Not Visible Online...</small>
                             @endif
                         </div>
                         <div class="actions">
@@ -68,7 +70,7 @@
                     </div>
                 @empty
                     <div class="no_dishes">
-                        Sorry, no dishes to show. 
+                        Sorry, no dishes to show.
                         <a class="text-decoration-none" href="{{ route('admin.dishes.create') }}">Add your first one!</a>
                     </div>
                 @endforelse
