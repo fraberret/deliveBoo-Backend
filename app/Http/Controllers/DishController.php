@@ -30,6 +30,7 @@ class DishController extends Controller
      */
     public function create()
     {
+
         return view('admin.dishes.create');
     }
 
@@ -68,9 +69,12 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        $userId = Auth::id();
-        $restaurant = Restaurant::where('user_id', $userId)->first();
-        return view('admin.dishes.show', compact('dish', 'restaurant'));
+        if (Auth::id() === $dish->restaurant_id) {
+            $userId = Auth::id();
+            $restaurant = Restaurant::where('user_id', $userId)->first();
+            return view('admin.dishes.show', compact('dish', 'restaurant'));
+        }
+        abort(403, 'Unauthorized');
     }
 
     /**
@@ -78,7 +82,11 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        if (Auth::id() === $dish->restaurant_id) {
+            # code...
+            return view('admin.dishes.edit', compact('dish'));
+        }
+        abort(403, 'Unauthorized');
     }
 
     /**
