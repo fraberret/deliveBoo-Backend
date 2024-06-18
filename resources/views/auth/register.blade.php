@@ -16,12 +16,13 @@
 
                                 <div class="mb-4 row">
                                     <label for="name"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            value="{{ old('name') }}" required min="2" max="255"
+                                            autocomplete="name" autofocus>
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -33,12 +34,13 @@
 
                                 <div class="mb-4 row">
                                     <label for="email"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email">
+                                            value="{{ old('email') }}" required min="5" max="255"
+                                            autocomplete="email">
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -50,13 +52,12 @@
 
                                 <div class="mb-4 row">
                                     <label for="password"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror" name="password"
-                                            required autocomplete="new-password">
-
+                                            required minlength="6" maxlength="25" autocomplete="new-password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -67,11 +68,12 @@
 
                                 <div class="mb-4 row">
                                     <label for="password-confirm"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control"
-                                            name="password_confirmation" required autocomplete="new-password">
+                                            name="password_confirmation"
+                                            autocomplete="new-password">
                                     </div>
                                 </div>
                             </div>
@@ -82,13 +84,13 @@
                                 {{-- Restaurant Name --}}
                                 <div class="mb-4 row">
                                     <label for="restaurant_name"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="restaurant_name" type="text"
                                             class="form-control @error('restaurant_name') is-invalid @enderror"
                                             name="restaurant_name" value="{{ old('restaurant_name') }}" required
-                                            autocomplete="restaurant_name" autofocus>
+                                            min="2" max="255" autocomplete="restaurant_name" autofocus>
 
                                         @error('restaurant_name')
                                             <span class="invalid-feedback" role="alert">
@@ -101,12 +103,12 @@
                                 {{-- Restaurant Address --}}
                                 <div class="mb-4 row">
                                     <label for="address"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Restaurant address') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="address" type="text"
                                             class="form-control @error('address') is-invalid @enderror" name="address"
-                                            value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                            value="{{ old('address') }}" required minlength="5" autocomplete="address" autofocus>
 
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
@@ -119,13 +121,14 @@
                                 {{-- Restaurant Telephone number --}}
                                 <div class="mb-4 row">
                                     <label for="telephone_number"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Telephone Number') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Telephone Number') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="telephone_number" type="text"
+                                        <input id="telephone_number" type="tel"
                                             class="form-control @error('telephone_number') is-invalid @enderror"
-                                            name="telephone_number" value="{{ old('telephone_number') }}"
-                                            autocomplete="telephone_number" autofocus>
+                                            name="telephone_number" value="{{ old('telephone_number') }}" autofocus>
+                                            {{-- autocomplete="telephone_number" minlength="13" pattern="^+?[0-9]{13}$" title="Please enter a valid telephone number, starting with + and including prefix and 10 more numbers." --}}
+                                           
 
                                         @error('telephone_number')
                                             <span class="invalid-feedback" role="alert">
@@ -138,7 +141,7 @@
                                 {{-- Restaurant Logo --}}
                                 <div class="mb-4 row">
                                     <label for="logo"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Restaurant logo') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="logo" type="file"
@@ -156,7 +159,7 @@
                                 {{-- Restaurant P.iva --}}
                                 <div class="mb-4 row">
                                     <label for="piva"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Restaurant P.Iva') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('P.Iva*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="piva" type="text"
@@ -172,6 +175,8 @@
                                 </div>
                             </div>
 
+                            <p class="text-secondary text-end">* = required fields </p>
+
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -185,4 +190,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var password = document.getElementById("password"),
+            confirm_password = document.getElementById("password-confirm");
+
+            function validatePassword() {
+            // let pattern = (?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}
+
+            // if (!pattern.test(password.value)) {
+            //     password.setCustomValidity("Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters")
+            //     return false
+            // }
+
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 @endsection

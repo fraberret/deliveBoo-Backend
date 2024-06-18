@@ -40,9 +40,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'unique:restaurants,name', 'string', 'min:5', 'max:50'],
+            'restaurant_name' => ['required', 'unique:restaurants,name', 'string', 'min:2', 'max:25'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
-            'telephone_number' => ['nullable', 'string', 'size:13'],
+            'telephone_number' => ['nullable', 'string', 'size:10'],
             'logo' => ['nullable', 'image', 'max:500'],
             'piva' => ['nullable', 'string', 'size:11'],
         ]);
@@ -52,6 +52,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $img_path = null;
 
         if ($request->has('logo')) {
 

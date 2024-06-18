@@ -66,7 +66,8 @@
                     </div>
                 @empty
                     <div class="no_dishes">
-                        No Dishes To Show...
+                        Sorry, no dishes to show. 
+                        <a class="text-decoration-none" href="{{ route('admin.dishes.create') }}">Add your first one!</a>
                     </div>
                 @endforelse
             </div>

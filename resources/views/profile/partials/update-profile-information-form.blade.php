@@ -60,7 +60,7 @@
         <div class="mb-2">
             <label for="restaurant_name">Restaurant Name</label>
             <input class="form-control" type="text" name="restaurant_name" id="restaurant_name"
-                autocomplete="restaurant_name" value="{{ old('restaurant_name', $user->restaurant->name) }}" required
+                autocomplete="restaurant_name" value="{{ old('restaurant_name', $user->restaurant->name) }}" required minlength="2" maxlength="25"
                 autofocus>
             @error('restaurant_name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -71,7 +71,7 @@
             <label for="telephone_number">Telephone Number</label>
             <input class="form-control" type="text" name="telephone_number" id="telephone_number"
                 autocomplete="telephone_number"
-                value="{{ old('telephone_number', $user->restaurant->telephone_number) }}" required autofocus>
+                value="{{ old('telephone_number', $user->restaurant->telephone_number) }}" autofocus>
             @error('telephone_number')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -95,15 +95,15 @@
             @enderror
         </div>
 
-        <div class="mb-2 d-flex">
+        <div class="mb-2 d-flex mt-3">
             @if (Str::startsWith($user->restaurant->logo, 'https://'))
                 <img width="140" src="{{ $user->restaurant->logo }}" alt="">
             @else
                 <img width="140" src="{{ asset('storage/' . $user->restaurant->logo) }}" alt="">
             @endif
 
-            <div class="input_file">
-                <label for="logo">P.Iva</label>
+            <div class="input_file ms-4">
+                <label for="logo">Logo</label>
                 <input class="form-control" type="file" name="logo" id="logo" autocomplete="logo">
                 @error('logo')
                     <div class="alert alert-danger">{{ $message }}</div>
