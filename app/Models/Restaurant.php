@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Dish;
+use App\Models\Cousine;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Restaurant extends Model
 {
@@ -34,5 +36,15 @@ class Restaurant extends Model
     public function dishes(): HasMany
     {
         return $this->hasMany(Dish::class);
+    }
+
+    /**
+     * The cousines that belong to the Restaurant
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function cousines(): BelongsToMany
+    {
+        return $this->belongsToMany(Cousine::class);
     }
 }

@@ -60,10 +60,32 @@
         <div class="mb-2">
             <label for="restaurant_name">Restaurant Name</label>
             <input class="form-control" type="text" name="restaurant_name" id="restaurant_name"
-                autocomplete="restaurant_name" value="{{ old('restaurant_name', $user->restaurant->name) }}" required minlength="2" maxlength="25"
-                autofocus>
+                autocomplete="restaurant_name" value="{{ old('restaurant_name', $user->restaurant->name) }}" required
+                minlength="2" maxlength="25" autofocus>
             @error('restaurant_name')
                 <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="cousines" class="form-label">Cousines Type</label>
+            <br>
+            <div class="mb-3 btn-group" role="group" aria-label="cousines">
+                @foreach ($cousines as $cousine)
+                    <input type="checkbox" class="btn-check" name="cousines[]" id="cousine-{{ $cousine->id }}"
+                        value="{{ $cousine->id }}" autocomplete="off"
+                        @if ($errors->any()) {{ in_array($cousine->id, old('cousines', [])) ? 'checked' : '' }}
+
+                        @else {{ $user->restaurant->cousines->contains($cousine->id) ? 'checked' : '' }} @endif>
+                    <label class="btn btn-outline-dark" for="cousine-{{ $cousine->id }}">
+                        {{ $cousine->name }}
+                    </label>
+                @endforeach
+            </div>
+            @error('cousines')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
             @enderror
         </div>
 

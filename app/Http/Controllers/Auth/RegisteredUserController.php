@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cousine;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -25,7 +26,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $cousines = Cousine::all();
+
+        return view('auth.register', compact('cousines'));
     }
 
     /**
@@ -35,12 +38,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // dd($request);
+        //dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'restaurant_name' => ['required', 'unique:restaurants,name', 'string', 'min:2', 'max:25'],
+            'cousines' => ['exists:cousines,id'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
             'telephone_number' => ['nullable', 'string', 'size:10'],
             'logo' => ['nullable', 'image', 'max:500'],
@@ -61,7 +65,8 @@ class RegisteredUserController extends Controller
             // $validated['preview_image'] = $img_path;
         }
 
-        Restaurant::create([
+
+        $restaurant = Restaurant::create([
             'name' => $request->restaurant_name,
             'slug' => Str::slug($request->restaurant_name, '-'),
             'address' => $request->address,
@@ -71,8 +76,9 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id, // set relationship ???
         ]);
 
-
-
+        if ($request->has('cousines')) {
+            $restaurant->cousines()->attach($request['cousines']);
+        }
 
 
         event(new Registered($user));

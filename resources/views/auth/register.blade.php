@@ -72,8 +72,7 @@
 
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control"
-                                            name="password_confirmation"
-                                            autocomplete="new-password">
+                                            name="password_confirmation" autocomplete="new-password">
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +99,22 @@
                                     </div>
                                 </div>
 
+                                {{-- Cousines --}}
+                                <div class="mb-3">
+                                    <label for="cousines" class="form-label">Cousines Type</label>
+                                    <br>
+                                    <div class="mb-3 btn-group" role="group" aria-label="cousines">
+                                        @foreach ($cousines as $cousine)
+                                            <input name="cousines[]" type="checkbox" class="btn-check"
+                                                id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}" />
+                                            <label class="btn btn-outline-dark" for="cousine-{{ $cousine->id }}">
+                                                {{ $cousine->name }}
+                                            </label>
+                                        @endforeach
+                                    </div>
+
+                                </div>
+
                                 {{-- Restaurant Address --}}
                                 <div class="mb-4 row">
                                     <label for="address"
@@ -108,7 +123,8 @@
                                     <div class="col-md-6">
                                         <input id="address" type="text"
                                             class="form-control @error('address') is-invalid @enderror" name="address"
-                                            value="{{ old('address') }}" required minlength="5" autocomplete="address" autofocus>
+                                            value="{{ old('address') }}" required minlength="5" autocomplete="address"
+                                            autofocus>
 
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
@@ -127,8 +143,8 @@
                                         <input id="telephone_number" type="tel"
                                             class="form-control @error('telephone_number') is-invalid @enderror"
                                             name="telephone_number" value="{{ old('telephone_number') }}" autofocus>
-                                            {{-- autocomplete="telephone_number" minlength="13" pattern="^+?[0-9]{13}$" title="Please enter a valid telephone number, starting with + and including prefix and 10 more numbers." --}}
-                                           
+                                        {{-- autocomplete="telephone_number" minlength="13" pattern="^+?[0-9]{13}$" title="Please enter a valid telephone number, starting with + and including prefix and 10 more numbers." --}}
+
 
                                         @error('telephone_number')
                                             <span class="invalid-feedback" role="alert">
@@ -195,7 +211,7 @@
         var password = document.getElementById("password"),
             confirm_password = document.getElementById("password-confirm");
 
-            function validatePassword() {
+        function validatePassword() {
             // let pattern = (?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}
 
             // if (!pattern.test(password.value)) {

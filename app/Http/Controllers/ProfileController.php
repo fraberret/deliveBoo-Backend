@@ -12,6 +12,7 @@ use App\Models\Restaurant;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use App\Models\Cousine;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,7 @@ class ProfileController extends Controller
     {
 
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $request->user(), 'cousines' => Cousine::all()
         ]);
     }
 
@@ -31,6 +32,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
         $restaurant = Restaurant::where('user_id', $request->user()->id)->first();
 
         //dd($restaurant->name);
@@ -40,6 +42,7 @@ class ProfileController extends Controller
 
         $restaurant_val_data =  $request->validate([
             'name' => ['required', 'min:2', 'max:25', Rule::unique('restaurants')->ignore($restaurant->id)],
+            'cousines' => ['exists:cousines,id'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
             'telephone_number' => ['nullable', 'string', 'size:10'],
             'logo' => ['nullable', 'image', 'max:500'],
@@ -61,6 +64,12 @@ class ProfileController extends Controller
 
         $restaurant_val_data['name'] = $request->restaurant_name;
         $restaurant_val_data['slug'] = Str::slug($request->restaurant_name, '-');
+
+        if ($request->has('cousines')) {
+            $restaurant->cousines()->sync($restaurant_val_data['cousines']);
+        } else {
+            $restaurant->cousines()->detach();
+        }
 
 
 
