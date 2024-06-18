@@ -70,8 +70,8 @@ class RestaurantSeeder extends Seeder
             $newRestaurant->logo = $restaurant['logo'];
             $newRestaurant->address = $restaurant['address'];
             $newRestaurant->piva = $restaurant['piva'];
-            $newRestaurant->cousines()->attach($restaurant['cousines']);
             $newRestaurant->save();
+            $newRestaurant->cousines()->sync($restaurant['cousines']);
         }
     }
 }
