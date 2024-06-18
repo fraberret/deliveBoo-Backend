@@ -90,7 +90,7 @@
                                         <input id="restaurant_name" type="text"
                                             class="form-control @error('restaurant_name') is-invalid @enderror"
                                             name="restaurant_name" value="{{ old('restaurant_name') }}" required
-                                            min="2" max="255" autocomplete="restaurant_name" autofocus>
+                                            minlength="2" maxlength="50" autocomplete="restaurant_name" autofocus>
 
                                         @error('restaurant_name')
                                             <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
 
                                 {{-- Cousines --}}
                                 <div class="mb-3">
-                                    <label for="cousines" class="form-label">Cousines Type</label>
+                                    <label for="cousines" class="form-label">{{ __('Cousines Type') }}</label>
                                     <br>
                                     <div class="mb-3 btn-group" role="group" aria-label="cousines">
                                         @foreach ($cousines as $cousine)
@@ -124,8 +124,8 @@
                                     <div class="col-md-6">
                                         <input id="address" type="text"
                                             class="form-control @error('address') is-invalid @enderror" name="address"
-                                            value="{{ old('address') }}" required minlength="5" autocomplete="address"
-                                            autofocus>
+                                            value="{{ old('address') }}" required minlength="5" maxlength="255"
+                                            autocomplete="address" autofocus>
 
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
@@ -191,17 +191,16 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            <p class="text-secondary text-end">* = required fields </p>
+                                <p class="text-secondary text-end">* = required fields </p>
 
-                            <div class="mb-4 row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+                                <div class="mb-4 row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Register') }}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -225,7 +224,6 @@
 
         function validateEmail() {
             let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            // let emailInput = document.getElementById('email');
 
             if (emailPattern.test(email.value)) {
                 email.setCustomValidity("");
