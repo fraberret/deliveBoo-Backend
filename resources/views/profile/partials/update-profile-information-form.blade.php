@@ -114,8 +114,8 @@
         <div class="mb-2">
             <label for="piva">P.Iva</label>
             <input class="form-control" type="text" name="piva" id="piva" autocomplete="piva"
-                value="{{ old('piva', $user->restaurant->piva) }}" required autofocus pattern="^\+[0-9]{12}$"
-                title="Telephone number must begin with a + followed by 12 digits.">
+                value="{{ old('piva', $user->restaurant->piva) }}" required autofocus pattern="[0-9]{11}"
+                title="Please enter exactly 11 digits for P.Iva">
             @error('piva')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
