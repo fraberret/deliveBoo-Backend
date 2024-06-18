@@ -10,7 +10,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">{{ __('Name*') }}</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                    value="{{ old('name') }}" />
+                    value="{{ old('name') }}" minlength="5" maxlength="100" required />
                 @error('name')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -30,9 +30,9 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">{{ __('Price') }}</label>
+                <label for="price" class="form-label">{{ __('Price*') }}</label>
                 <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror"
-                    name="price" id="price" value="{{ old('price') }}" />
+                    name="price" id="price" value="{{ old('price') }}" min="0" required />
                 @error('price')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -56,8 +56,8 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">{{ __('Description') }}</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                    rows="5">{{ old('description') }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" minlength="5" maxlength="1000"
+                    name="description" id="description" rows="5">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -67,8 +67,9 @@
 
             <div class="mb-3">
                 <label for="ingredients" class="form-label">{{ __('Ingredients') }}</label>
-                <input type="text" class="form-control @error('ingredients') is-invalid @enderror" name="ingredients"
-                    id="ingredients" value="{{ old('ingredients') }}" />
+                <textarea class="form-control @error('ingredients') is-invalid @enderror" minlength="5" maxlength="1000"
+                    name="ingredients" id="ingredients" rows="5">{{ old('ingredients') }}</textarea>
+
                 @error('ingredients')
                     <div class="text-danger py-2">
                         {{ $message }}
