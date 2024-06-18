@@ -15,12 +15,13 @@ class RestaurantSeeder extends Seeder
     {
         $restaurants = [
             [
-                'user_id' => 1,  
+                'user_id' => 1,
                 'name' => 'Ristorante Daje',
                 'telephone_number' => '+390123456789',
                 'logo' => '/img/restaurants/Daje.jpeg',
                 'address' => 'Via San Giovanni, 1',
-                'piva' => '12345678901' 
+                'piva' => '12345678901',
+                'cousines' => [1]
             ],
             [
                 'user_id' => 2,
@@ -28,7 +29,8 @@ class RestaurantSeeder extends Seeder
                 'telephone_number' => '+390987654321',
                 'logo' => '/img/restaurants/Da_niele.jpeg',
                 'address' => 'Via Delle Palme, 2',
-                'piva' => '98765432109'
+                'piva' => '98765432109',
+                'cousines' => [1, 8]
             ],
             [
                 'user_id' => 3,
@@ -36,7 +38,8 @@ class RestaurantSeeder extends Seeder
                 'telephone_number' => '+390123987654',
                 'logo' => '/img/restaurants/Olio.jpeg',
                 'address' => 'Corso Italia, 15',
-                'piva' => '56789012345'
+                'piva' => '56789012345',
+                'cousines' => [1, 7]
             ],
             [
                 'user_id' => 4,
@@ -44,7 +47,8 @@ class RestaurantSeeder extends Seeder
                 'telephone_number' => '+390456123789',
                 'logo' => '/img/restaurants/Cake.jpeg',
                 'address' => 'Piazza Bologna, 10',
-                'piva' => '34567890123'
+                'piva' => '34567890123',
+                'cousines' => [2]
             ],
             [
                 'user_id' => 5,
@@ -52,7 +56,8 @@ class RestaurantSeeder extends Seeder
                 'telephone_number' => '+390987123456',
                 'logo' => '/img/restaurants/Cafe.jpeg',
                 'address' => 'Viale Taranto, 22',
-                'piva' => '23456789012'
+                'piva' => '23456789012',
+                'cousines' => [2, 9]
             ]
         ];
 
@@ -65,6 +70,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant->logo = $restaurant['logo'];
             $newRestaurant->address = $restaurant['address'];
             $newRestaurant->piva = $restaurant['piva'];
+            $newRestaurant->cousines()->attach($restaurant['cousines']);
             $newRestaurant->save();
         }
     }
