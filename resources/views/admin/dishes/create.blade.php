@@ -81,7 +81,7 @@
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
                 </a>
                 <button type="submit" class="btn btn-success">
-                    <i class="fa fa-check" aria-hidden="true"></i> Create
+                    <i class="fa fa-floppy-disk" aria-hidden="true"></i> Save
                 </button>
             </div>
 

@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', "All Dishes")
+
 @section('content')
     <div class="container">
         @include('admin.partials.session-message')

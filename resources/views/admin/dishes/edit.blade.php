@@ -57,8 +57,9 @@
             <div class="mb-3 d-flex gap-3">
                 <label for="visible" class="form-label">{{ __('Visible') }}</label>
                 <div class="form-check form-switch">
+                    <input type="hidden" name="visible" value="0">
                     <input class="form-check-input" type="checkbox" name="visible" id="visible" value="1"
-                        {{ old('visible', $dish->visible) ? 'checked' : '' }}>
+                    {{ old('visible', $dish->visible) ? 'checked' : '' }}>
                     @error('visible')
                         <div class="text-danger py-2">
                             {{ $message }}
