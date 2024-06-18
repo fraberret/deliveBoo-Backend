@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'unique:restaurants,name', 'string', 'min:2', 'max:25'],
             'cousines' => ['exists:cousines,id'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
-            'telephone_number' => ['nullable', 'string', 'size:10'],
+            'telephone_number' => ['nullable', 'string', 'size:13'],
             'logo' => ['nullable', 'image', 'max:500'],
             'piva' => ['nullable', 'string', 'size:11'],
         ]);

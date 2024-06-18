@@ -44,7 +44,7 @@ class ProfileController extends Controller
             'name' => ['required', 'min:2', 'max:25', Rule::unique('restaurants')->ignore($restaurant->id)],
             'cousines' => ['exists:cousines,id'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
-            'telephone_number' => ['nullable', 'string', 'size:10'],
+            'telephone_number' => ['nullable', 'string', 'size:13'],
             'logo' => ['nullable', 'image', 'max:500'],
             'piva' => ['nullable', 'string', 'size:11']
         ]);

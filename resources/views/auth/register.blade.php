@@ -21,8 +21,9 @@
                                     <div class="col-md-6">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required min="2" max="255"
-                                            autocomplete="name" autofocus>
+                                            value="{{ old('name') }}" required pattern="^[A-Za-z0-9 ]+$"
+                                            title="Only alphanumeric characters and spaces are allowed" minlength="2"
+                                            minlength="255" autocomplete="name" autofocus>
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -39,7 +40,7 @@
                                     <div class="col-md-6">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required min="5" max="255"
+                                            value="{{ old('email') }}" required minlength="5" minlength="255"
                                             autocomplete="email">
 
                                         @error('email')
@@ -142,9 +143,9 @@
                                     <div class="col-md-6">
                                         <input id="telephone_number" type="tel"
                                             class="form-control @error('telephone_number') is-invalid @enderror"
-                                            name="telephone_number" value="{{ old('telephone_number') }}" autofocus>
-                                        {{-- autocomplete="telephone_number" minlength="13" pattern="^+?[0-9]{13}$" title="Please enter a valid telephone number, starting with + and including prefix and 10 more numbers." --}}
-
+                                            name="telephone_number" value="{{ old('telephone_number') }}" autofocus
+                                            pattern="^\+[0-9]{12}$"
+                                            title="Telephone number must begin with a + followed by 12 digits." required>
 
                                         @error('telephone_number')
                                             <span class="invalid-feedback" role="alert">
@@ -180,7 +181,8 @@
                                     <div class="col-md-6">
                                         <input id="piva" type="text"
                                             class="form-control @error('piva') is-invalid @enderror" name="piva"
-                                            value="{{ old('piva') }}" required autocomplete="piva" autofocus>
+                                            value="{{ old('piva') }}" required autocomplete="piva" autofocus
+                                            pattern="[0-9]{11}" title="Please enter exactly 11 digits for P.Iva">
 
                                         @error('piva')
                                             <span class="invalid-feedback" role="alert">
@@ -210,14 +212,9 @@
     <script>
         var password = document.getElementById("password"),
             confirm_password = document.getElementById("password-confirm");
+        let email = document.getElementById("email")
 
         function validatePassword() {
-            // let pattern = (?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}
-
-            // if (!pattern.test(password.value)) {
-            //     password.setCustomValidity("Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters")
-            //     return false
-            // }
 
             if (password.value != confirm_password.value) {
                 confirm_password.setCustomValidity("Passwords Don't Match");
@@ -226,7 +223,21 @@
             }
         }
 
+        function validateEmail() {
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            // let emailInput = document.getElementById('email');
+
+            if (emailPattern.test(email.value)) {
+                email.setCustomValidity("");
+            } else {
+                email.setCustomValidity("Please enter a valid email address");
+            }
+        }
+
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
+
+        email.onchange = validateEmail;
+        email.onkeyup = validateEmail;
     </script>
 @endsection
