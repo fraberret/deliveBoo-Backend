@@ -145,7 +145,7 @@
                                             class="form-control @error('telephone_number') is-invalid @enderror"
                                             name="telephone_number" value="{{ old('telephone_number') }}" autofocus
                                             pattern="^\+[0-9]{12}$"
-                                            title="Telephone number must begin with a + followed by 12 digits." required>
+                                            title="Telephone number must begin with a + followed by 12 digits.">
 
                                         @error('telephone_number')
                                             <span class="invalid-feedback" role="alert">

@@ -93,16 +93,19 @@
             <label for="telephone_number">Telephone Number</label>
             <input class="form-control" type="text" name="telephone_number" id="telephone_number"
                 autocomplete="telephone_number"
-                value="{{ old('telephone_number', $user->restaurant->telephone_number) }}" autofocus>
+                value="{{ old('telephone_number', $user->restaurant->telephone_number) }}" autofocus
+                pattern="^\+[0-9]{12}$" title="Telephone number must begin with a + followed by 12 digits.">
             @error('telephone_number')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
 
+
         <div class="mb-2">
             <label for="address">Address</label>
             <input class="form-control" type="text" name="address" id="address" autocomplete="address"
-                value="{{ old('address', $user->restaurant->address) }}" required autofocus>
+                minlength="5" maxlength="255" value="{{ old('address', $user->restaurant->address) }}" required
+                autofocus>
             @error('address')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -111,7 +114,8 @@
         <div class="mb-2">
             <label for="piva">P.Iva</label>
             <input class="form-control" type="text" name="piva" id="piva" autocomplete="piva"
-                value="{{ old('piva', $user->restaurant->piva) }}" required autofocus>
+                value="{{ old('piva', $user->restaurant->piva) }}" required autofocus pattern="^\+[0-9]{12}$"
+                title="Telephone number must begin with a + followed by 12 digits.">
             @error('piva')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
