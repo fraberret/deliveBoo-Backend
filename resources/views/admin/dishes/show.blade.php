@@ -60,9 +60,6 @@
                         </div>
                         <p>
                             {{ $dish->description }}
-                            {{-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum nulla ipsum laborum molestiae rerum
-                            harum dolorum ad totam debitis dolor! Magnam iusto suscipit assumenda porro obcaecati hic sunt
-                            aliquid impedit. --}}
                         </p>
                     </div>
                     <div class="visible">
@@ -77,7 +74,13 @@
                     <div class="info_box">
                         <div class="restaurant">
                             <div class="restaurant_image">
-                                {{-- <img src="" alt=""> --}}
+                                @if (Str::startsWith($restaurant->logo, 'https://'))
+                                    <img src="{{ $restaurant->logo }}" alt="">
+                                @elseif (Str::startsWith($restaurant->logo, '/img/'))
+                                    <img src="{{ asset($restaurant->logo) }}" alt="">
+                                @else
+                                    <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
+                                @endif
                             </div>
                             <div class="restaurant_text">
                                 <small>Restaurant</small>
@@ -85,14 +88,14 @@
                             </div>
                         </div>
                         <div class="ratings">
-                            <div class="stars">
+                            {{-- <div class="stars">
                                 <img src="{{ asset('img/star-full.png') }}" alt="">
                                 <img src="{{ asset('img/star-full.png') }}" alt="">
                                 <img src="{{ asset('img/star-full.png') }}" alt="">
                                 <img src="{{ asset('img/star-full.png') }}" alt="">
                                 <img src="{{ asset('img/star-empty.png') }}" alt="">
                             </div>
-                            <small>4.8</small>
+                            <small>4.8</small> --}}
                         </div>
                     </div>
                 </div>
