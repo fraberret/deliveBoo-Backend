@@ -67,10 +67,10 @@
             @enderror
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 overflow-auto">
             <label for="cousines" class="form-label">Cousines Type</label>
             <br>
-            <div class="mb-3 btn-group" role="group" aria-label="cousines">
+            <div class="mb-3 btn-group " role="group" aria-label="cousines">
                 @foreach ($cousines as $cousine)
                     <input type="checkbox" class="btn-check" name="cousines[]" id="cousine-{{ $cousine->id }}"
                         value="{{ $cousine->id }}" autocomplete="off"
