@@ -254,6 +254,12 @@
                         aspect-ratio: 1;
                         background-color: $boo-gray-400;
                         border-radius: 50%;
+                        overflow: hidden;
+
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                        }
                     }
 
                     .restaurant_text {

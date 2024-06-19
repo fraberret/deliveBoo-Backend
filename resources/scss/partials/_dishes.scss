@@ -130,17 +130,25 @@
 
 // bottom drawer ----------------------------------------> 
 
-.dishes .bottom {
+.dishes .bottom,
+.dishes .bottom_no_pagination {
     background-color: $boo-darker;
     width: 100%;
     z-index: -1;
-    transform: translateY(-7rem);
     border-radius: 2rem;
     position: absolute;
     left: 0;
     padding: 2.6rem;
     padding-top: 7.2rem;
     transition: transform .25s ease;
+}
+
+.dishes .bottom {
+    transform: translateY(-7rem);
+}
+
+.dishes .bottom_no_pagination {
+    transform: translateY(-4rem);
 }
 
 .dishes:hover .bottom {

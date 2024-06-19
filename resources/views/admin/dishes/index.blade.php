@@ -75,11 +75,16 @@
                     </div>
                 @endforelse
             </div>
-            <div class="bottom">
-                <div class="pagination">
-                    {{ $dishes->links('pagination::bootstrap-5') }}
+            @if ($dishes->hasPages())
+                <div class="bottom">
+                    <div class="pagination">
+                        {{ $dishes->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="bottom_no_pagination">
+                </div>
+            @endif
         </div>
     </div>
 @endsection
