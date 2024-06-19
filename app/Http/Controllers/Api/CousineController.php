@@ -28,7 +28,20 @@ class CousineController extends Controller
             $query->where('name', $searchCousine);
         })->with('cousines')->get();
 
-        // return response()->json(['data' => $restaurants]);
+        return response()->json([
+            'success' => true,
+            'results' => $restaurants
+        ]);
+    }
+
+    public function filterByMultipleCousine($multipleSearch)
+    {
+        $cuisinesArray = explode(',', $multipleSearch);
+
+        $restaurants = Restaurant::whereHas('cousines', function ($query) use ($cuisinesArray) {
+            $query->whereIn('name', $cuisinesArray);
+        })->with('cousines')->get();
+
         return response()->json([
             'success' => true,
             'results' => $restaurants

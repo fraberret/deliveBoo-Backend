@@ -27,4 +27,5 @@ Route::get('restaurants/{searchTerm}', [RestaurantController::class, 'filter']);
 
 
 Route::get('cousines', [CousineController::class, 'index']);
-Route::get('cousines/{searchCousine}', [CousineController::class, 'filterByCousine']);
+// Route::get('cousines/{searchCousine}', [CousineController::class, 'filterByCousine']);
+Route::get('cousines/{multipleSearch}', [CousineController::class, 'filterByMultipleCousine']);
