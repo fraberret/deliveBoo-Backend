@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="jumbotron p-5 mb-4 bg-light">
+    <div class="jumbotron p-5 mb-4">
         <div class="container py-5">
             <div class="d-flex align-items-center">
                 <h2 class="display-3 fw-bold">
@@ -12,7 +12,7 @@
                 </h2>
 
                 <div class="logo_laravel ps-2">
-                    <img src="{{ asset('img/logo-deliveboo-big.png') }}" width="200px" alt="app logo">
+                    <img src="{{ asset('img/logo-deliveboo-big.png') }}" width="300px" alt="app logo">
                 </div>
             </div>
 
