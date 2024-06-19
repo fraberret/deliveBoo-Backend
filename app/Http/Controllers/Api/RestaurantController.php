@@ -53,29 +53,10 @@ class RestaurantController extends Controller
 
     public function filterByCousine($searchCousine)
     {
-        //$cousines = Cousine::with('restaurants')->get();
-        //dd($searchCousine);
+        $restaurants = Restaurant::whereHas('cousines', function ($query) use ($searchCousine) {
+            $query->where('name', 'like', '%' . $searchCousine . '%');
+        })->with('cousines')->get();
 
-        $restaurants = Restaurant::with('cousines', 'dishes')->get();
-        $filteredRestaurants = [];
-        foreach ($restaurants as $restaurant) {
-            foreach ($restaurant->cousines as $cousine) {
-                if ($cousine->name == $searchCousine) {
-                    array_push($filteredRestaurants, $cousine);
-                }
-            }
-            // if ($restaurant->cousines() == $searchCousine) {
-            //     dd('ok');
-            // } else {
-            //     dd('non ce');
-            // }
-        }
-        dd($filteredRestaurants);
-
-
-        // return response()->json([
-        //     'success' => true,
-        //     'results' => $filteredRestaurants
-        // ]);
+        return response()->json(['data' => $restaurants]);
     }
 }
