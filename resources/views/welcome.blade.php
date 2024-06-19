@@ -20,9 +20,12 @@
                 DeliveBoo is a home food buying and selling platform.
                 Access the page to insert your menu and manage orders and sales statistics.
             </p>
-
-            <a href="{{ route('login') }}" class="btn btn-secondary">{{ __('Login') }}</a>
-            <a href="{{ route('register') }}" class="btn btn-secondary">{{ __('Register') }}</a>
+            @guest
+                <a href="{{ route('login') }}" class="btn btn-secondary">{{ __('Login') }}</a>
+                <a href="{{ route('register') }}" class="btn btn-secondary">{{ __('Register') }}</a>
+            @else
+                <a href="{{ url('dashboard') }}" class="btn btn-secondary">{{ __('Dashboard') }}</a>
+            @endguest
         </div>
     </div>
 
