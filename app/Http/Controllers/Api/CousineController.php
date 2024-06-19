@@ -28,6 +28,10 @@ class CousineController extends Controller
             $query->where('name', $searchCousine);
         })->with('cousines')->get();
 
-        return response()->json(['data' => $restaurants]);
+        // return response()->json(['data' => $restaurants]);
+        return response()->json([
+            'success' => true,
+            'results' => $restaurants
+        ]);
     }
 }

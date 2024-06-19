@@ -127,7 +127,7 @@
             @elseif (Str::startsWith($user->restaurant->logo, '/img/'))
                 <img width="140" src="{{ asset($user->restaurant->logo) }}" alt="">
             @else
-                <img width="140" src="{{ asset('storage/' . $user->restaurant->logo) }}" alt="">
+                <img width="140" src="{{ asset('storage/' . $user->restaurant->logo) }}" alt="immagine-di-profilo">
             @endif
 
             <div class="input_file ms-4">
