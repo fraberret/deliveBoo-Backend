@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\RestaurantController;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('restaurants', [RestaurantController::class, 'index']);
 Route::get('restaurants/{searchTerm}', [RestaurantController::class, 'filter']);
+Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);

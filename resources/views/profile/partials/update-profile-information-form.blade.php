@@ -124,6 +124,8 @@
         <div class="mb-2 d-flex mt-3">
             @if (Str::startsWith($user->restaurant->logo, 'https://'))
                 <img width="140" src="{{ $user->restaurant->logo }}" alt="">
+            @elseif (Str::startsWith($user->restaurant->logo, '/img/'))
+                <img width="140" src="{{ asset($user->restaurant->logo) }}" alt="">
             @else
                 <img width="140" src="{{ asset('storage/' . $user->restaurant->logo) }}" alt="">
             @endif
