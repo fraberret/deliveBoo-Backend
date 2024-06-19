@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CousineController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -23,4 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('restaurants', [RestaurantController::class, 'index']);
 Route::get('restaurant/{restaurant:slug}', [RestaurantController::class, 'show']);
 Route::get('restaurants/{searchTerm}', [RestaurantController::class, 'filter']);
-Route::get('restaurants/cousine/{searchCousine}', [RestaurantController::class, 'filterByCousine']);
+
+
+Route::get('cousines', [CousineController::class, 'index']);
+Route::get('cousine/{searchCousine}', [CousineController::class, 'filterByCousine']);
