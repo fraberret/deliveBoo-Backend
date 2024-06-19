@@ -54,7 +54,7 @@ class RestaurantController extends Controller
     public function filterByCousine($searchCousine)
     {
         $restaurants = Restaurant::whereHas('cousines', function ($query) use ($searchCousine) {
-            $query->where('name', 'like', '%' . $searchCousine . '%');
+            $query->where('name', $searchCousine);
         })->with('cousines')->get();
 
         return response()->json(['data' => $restaurants]);
