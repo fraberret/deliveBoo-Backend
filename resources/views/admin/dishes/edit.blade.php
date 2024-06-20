@@ -20,13 +20,16 @@
             </div>
 
             <div class="mb-3 d-flex align-items-center">
-                <div class="me-3">
+                <div class="me-3 ">
                     @if (Str::startsWith($dish->cover_image, 'https://'))
-                        <img width="140" src="{{ $dish->cover_image }}" alt="">
+                        <img class="rounded-circle" width="140" src="{{ $dish->cover_image }}"
+                            alt="{{ $dish->name }} image">
                     @elseif (Str::startsWith($dish->cover_image, '/img'))
-                        <img width="140" src="{{ asset($dish->cover_image) }}" alt="">
+                        <img class="rounded-circle" width="140" src="{{ asset($dish->cover_image) }}"
+                            alt="{{ $dish->name }} image">
                     @else
-                        <img width="140" src="{{ asset('storage/' . $dish->cover_image) }}" alt="immagine-di-profilo">
+                        <img class="rounded-circle" width="140" src="{{ asset('storage/' . $dish->cover_image) }}"
+                            alt="{{ $dish->name }} image">
                     @endif
                 </div>
 
