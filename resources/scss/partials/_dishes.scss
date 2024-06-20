@@ -208,9 +208,8 @@
 
 @media screen and (max-width: 780px) {
 
-    .dishes .price,
-    .dishes .visible {
-        display: none;
+    .mobile_hidden {
+        display: none !important;
     }
 
     .dishes .bottom {

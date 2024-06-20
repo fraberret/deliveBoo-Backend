@@ -38,7 +38,10 @@
                                 @endif
                             </div>
                         </a>
-                        <div class="name">{{ $dish->name }}</div>
+                        <div class="name">
+                            <a href="{{ route('admin.dishes.show', $dish) }}" class="name text-decoration-none text-white">
+                                {{ $dish->name }}</a>
+                        </div>
                         <div class="price">
                             @if ($dish->price)
                                 {{ $dish->price }} &#8364;
@@ -46,7 +49,7 @@
                                 <span>add a price...</span>
                             @endif
                         </div>
-                        <div class="visible">
+                        <div class="visible mobile_hidden">
                             @if ($dish->visible)
                                 <div class="visible_circle"></div>
                                 <small>Visible Online</small>
@@ -57,7 +60,7 @@
                         </div>
                         <div class="actions">
                             <a href="{{ route('admin.dishes.show', $dish) }}"><img width="23"
-                                    src="{{ asset('img/icons/eye.png') }}" alt="eye icon"></a>
+                                    src="{{ asset('img/icons/eye.png') }}" alt="eye icon" class="mobile_hidden"></a>
                             <a href="{{ route('admin.dishes.edit', $dish) }}"><img width="22"
                                     src="{{ asset('img/icons/edit.png') }}" alt="edit icon"></a>
                             <!-- Modal Trigger -->
