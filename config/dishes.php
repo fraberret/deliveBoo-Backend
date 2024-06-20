@@ -186,10 +186,10 @@ return [
         "restaurant_id" => 4,
     ],
     [
-        "name" => "Zabaglione",
+        "name" => "Zabaione",
         "description" => "Light and frothy dessert made with egg yolks, sugar, and Marsala wine.",
         "price" => 6.50,
-        "cover_image" => '/img/dishes/zabaglione.png',
+        "cover_image" => '/img/dishes/zabaione.png',
         "ingredients" => "Egg Yolks, Sugar, Marsala Wine",
         "restaurant_id" => 4,
     ],
