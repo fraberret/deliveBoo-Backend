@@ -22,14 +22,13 @@
             <div class="mb-3 d-flex align-items-center">
                 <div class="me-3">
                     @if (Str::startsWith($dish->cover_image, 'https://'))
-                        <img width="140" src="{{ $dish->cover_image }}" alt="{{ $dish->name }}"
-                            class="img-fluid rounded">
+                        <img width="140" src="{{ $dish->cover_image }}" alt="">
+                    @elseif (Str::startsWith($dish->cover_image, '/img/'))
+                        <img width="140" src="{{ asset($dish->cover_image) }}" alt="">
                     @else
-                        <img width="140" src="{{ asset('storage/' . $dish->cover_image) }}" alt="{{ $dish->name }}"
-                            class="img-fluid rounded">
+                        <img width="140" src="{{ asset('storage/' . $dish->cover_image) }}" alt="immagine-di-profilo">
                     @endif
                 </div>
-
 
                 <div class="flex-grow-1">
                     <label for="cover_image" class="form-label">{{ __('Cover Image') }}</label>
