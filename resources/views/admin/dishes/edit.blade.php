@@ -23,7 +23,7 @@
                 <div class="me-3">
                     @if (Str::startsWith($dish->cover_image, 'https://'))
                         <img width="140" src="{{ $dish->cover_image }}" alt="">
-                    @elseif (Str::startsWith($dish->cover_image, '/img/'))
+                    @elseif (Str::startsWith($dish->cover_image, '/img'))
                         <img width="140" src="{{ asset($dish->cover_image) }}" alt="">
                     @else
                         <img width="140" src="{{ asset('storage/' . $dish->cover_image) }}" alt="immagine-di-profilo">
