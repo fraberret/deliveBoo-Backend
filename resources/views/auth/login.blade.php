@@ -74,7 +74,12 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
+                </div>
+                <div class="mt-4 row mb-0">
+                    <a href="{{ route('register') }}" class="text-decoration-none text-center">If you don't have an
+                        account, register here</a>
                 </div>
             </div>
         </div>
