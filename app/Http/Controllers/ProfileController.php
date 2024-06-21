@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         $restaurant_val_data =  $request->validate([
             'name' => ['required', 'min:2', 'max:25', Rule::unique('restaurants')->ignore($restaurant->id)],
-            'cousines' => ['exists:cousines,id'],
+            'cousines' => ['required', 'exists:cousines,id'],
             'address' => ['nullable', 'string', 'min:5', 'max:255'],
             'telephone_number' => ['nullable', 'string', 'size:13'],
             'logo' => ['nullable', 'image', 'max:500'],
