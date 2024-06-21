@@ -8,6 +8,9 @@ use Database\Seeders\CousineSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\RestaurantSeeder;
 use Database\Seeders\DishSeeder;
+use Database\Seeders\OrderSeederSeeder;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([CousineSeeder::class, UserSeeder::class, RestaurantSeeder::class, DishSeeder::class]);
+        $this->call([CousineSeeder::class, UserSeeder::class, RestaurantSeeder::class, DishSeeder::class, OrderSeeder::class]);
     }
 }
