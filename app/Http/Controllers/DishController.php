@@ -74,7 +74,7 @@ class DishController extends Controller
             $restaurant = Restaurant::where('user_id', $userId)->first();
             return view('admin.dishes.show', compact('dish', 'restaurant'));
         }
-        abort(403, 'Unauthorized');
+        abort(404, 'Page Not Found');
     }
 
     /**
@@ -86,7 +86,7 @@ class DishController extends Controller
             # code...
             return view('admin.dishes.edit', compact('dish'));
         }
-        abort(403, 'Unauthorized');
+        abort(404, 'Page Not Found');
     }
 
     /**
