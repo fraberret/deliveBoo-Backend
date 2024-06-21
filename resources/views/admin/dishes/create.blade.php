@@ -77,6 +77,8 @@
                 @enderror
             </div>
 
+            <p class="text-secondary text-end">* = required fields </p>
+
             <div class="d-flex justify-content-between">
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> Back

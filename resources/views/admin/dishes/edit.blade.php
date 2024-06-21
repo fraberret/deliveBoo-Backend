@@ -9,7 +9,7 @@
             @method('PUT')
 
             <div class="mb-3">
-                <label for="name" class="form-label">{{ __('Name') }}</label>
+                <label for="name" class="form-label">{{ __('Name*') }}</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                     value="{{ old('name', $dish->name) }}" minlength="5" maxlength="100" />
                 @error('name')
@@ -46,7 +46,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">{{ __('Price') }}</label>
+                <label for="price" class="form-label">{{ __('Price*') }}</label>
                 <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror"
                     name="price" id="price" min='0' value="{{ old('price', $dish->price) }}" />
                 @error('price')
@@ -93,6 +93,8 @@
                     </div>
                 @enderror
             </div>
+
+            <p class="text-secondary text-end">* = required fields </p>
 
             <div class="d-flex justify-content-between">
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">
