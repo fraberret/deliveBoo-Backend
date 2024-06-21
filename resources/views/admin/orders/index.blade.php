@@ -6,8 +6,8 @@
     <div class="container">
         @include('admin.partials.session-message')
         <div class="table-responsive">
-            <table class="table table-primary">
-                <thead>
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">Restaurant</th>
                         <th scope="col">Date</th>
@@ -18,20 +18,20 @@
                 </thead>
                 <tbody>
                     @forelse ($orders as $order)
-                        <tr class="">
+                        <tr>
                             <td scope="row">{{ $order->restaurant->name }}</td>
                             <td>{{ $order->date }}</td>
                             <td>{{ $order->total }}</td>
                             <td>{{ $order->customer_name }}</td>
                             <td>
-                                <a href="{{ route('admin.orders.show', $order) }}">Show</a>
+                                <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-primary btn-sm">Show</a>
                             </td>
-
                         </tr>
-
                     @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No orders available</td>
+                        </tr>
                     @endforelse
-
                 </tbody>
             </table>
         </div>
