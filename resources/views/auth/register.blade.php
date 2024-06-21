@@ -110,6 +110,7 @@
                                         @endforeach
 
                                     </div>
+                                    <div id="cousines-error" class="alert alert-danger" style="display: none;"></div>
                                     @error('cousines')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -208,18 +209,21 @@
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("registrationForm");
             if (form) {
-                console.log("Form trovato: ", form);
+                /* console.log("Form trovato: ", form); */
                 form.addEventListener("submit", function(event) {
                     const checkboxes = document.querySelectorAll('input[name="cousines[]"]:checked');
+                    const errorDiv = document.getElementById("cousines-error");
                     if (checkboxes.length === 0) {
-                        alert("Seleziona almeno un tipo di cucina.");
+                        errorDiv.textContent = "Select at least one cousine type.";
+                        errorDiv.style.display = "block";
                         event.preventDefault();
+                    } else {
+                        errorDiv.style.display = "none";
                     }
                 });
-            } else {
-                console.error("Form non trovato!");
             }
         });
+
         // function handleData() {
         //     var form_data = new FormData(document.querySelector("form"));
 
