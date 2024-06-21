@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Restaurant;
+use App\Models\Dish;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class Order extends Model
@@ -37,4 +39,13 @@ class Order extends Model
         return $this->belongsTo(Restaurant::class);
     }
 
+    /**
+     * The dishes that belong to the Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function dishes(): BelongsToMany
+    {
+        return $this->belongsToMany(Dish::class);
+    }
 }
