@@ -10,7 +10,8 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form method="POST" id="registrationForm" action="{{ route('register') }}"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="user">
@@ -169,7 +170,7 @@
                                 {{-- Restaurant P.iva --}}
                                 <div class="mb-4 row">
                                     <label for="piva"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('P.Iva*') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('VAT*') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="piva" type="text"
@@ -204,6 +205,21 @@
             confirm_password = document.getElementById("password-confirm");
         let email = document.getElementById("email")
 
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("registrationForm");
+            if (form) {
+                console.log("Form trovato: ", form);
+                form.addEventListener("submit", function(event) {
+                    const checkboxes = document.querySelectorAll('input[name="cousines[]"]:checked');
+                    if (checkboxes.length === 0) {
+                        alert("Seleziona almeno un tipo di cucina.");
+                        event.preventDefault();
+                    }
+                });
+            } else {
+                console.error("Form non trovato!");
+            }
+        });
         // function handleData() {
         //     var form_data = new FormData(document.querySelector("form"));
 
@@ -275,4 +291,5 @@
         email.onchange = validateEmail;
         email.onkeyup = validateEmail;
     </script>
+
 @endsection
