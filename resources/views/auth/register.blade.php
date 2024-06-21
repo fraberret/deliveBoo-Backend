@@ -28,9 +28,7 @@
                                             minlength="255" autocomplete="name" autofocus>
 
                                         @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -46,9 +44,7 @@
                                             autocomplete="email">
 
                                         @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -62,9 +58,7 @@
                                             class="form-control @error('password') is-invalid @enderror" name="password"
                                             required minlength="6" maxlength="25" autocomplete="new-password">
                                         @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -95,26 +89,29 @@
                                             minlength="2" maxlength="50" autocomplete="restaurant_name" autofocus>
 
                                         @error('restaurant_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
 
                                 {{-- Cousines --}}
                                 <div class="mb-3">
-                                    <label for="cousines" class="form-label">{{ __('Cousines Type') }}</label>
+                                    <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
                                     <br>
-                                    <div class="mb-3 btn-group" role="group" aria-label="cousines">
+                                    <div class="mb-3 btn-group cousine" role="group" aria-label="cousines"
+                                        id="myCheckBox">
                                         @foreach ($cousines as $cousine)
                                             <input name="cousines[]" type="checkbox" class="btn-check"
-                                                id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}" />
+                                                id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
                                             <label class="btn btn-outline-dark" for="cousine-{{ $cousine->id }}">
                                                 {{ $cousine->name }}
                                             </label>
                                         @endforeach
+
                                     </div>
+                                    @error('cousines')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
 
                                 </div>
 
@@ -130,9 +127,7 @@
                                             autocomplete="address" autofocus>
 
                                         @error('address')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -150,9 +145,7 @@
                                             title="Telephone number must begin with a + followed by 12 digits.">
 
                                         @error('telephone_number')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -168,9 +161,7 @@
                                             value="{{ old('logo') }}" autocomplete="logo" autofocus>
 
                                         @error('logo')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -187,9 +178,7 @@
                                             pattern="[0-9]{11}" title="Please enter exactly 11 digits for P.Iva">
 
                                         @error('piva')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -214,6 +203,52 @@
         var password = document.getElementById("password"),
             confirm_password = document.getElementById("password-confirm");
         let email = document.getElementById("email")
+
+        // function handleData() {
+        //     var form_data = new FormData(document.querySelector("form"));
+
+        //     if (!form_data.has("cousines[]")) {
+        //         document.getElementById("chk_option_error").style.visibility = "visible";
+        //     } else {
+        //         document.getElementById("chk_option_error").style.visibility = "hidden";
+        //     }
+        //     return false;
+        // }
+
+
+        // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        // let checkedCount = 0
+
+        // checkboxes.forEach(checkbox => {
+        //     checkbox.addEventListener('click', function() {
+        //         if (checkbox.checked) {
+        //             checkedCount += 1
+        //         } else {
+        //             checkedCount -= 1
+        //         }
+        //         console.log(checkedCount);
+        //         if (checkedCount === 0) {
+        //             checkbox.setCustomValidity("Select one cousine")
+        //         }
+        //     });
+        // });
+
+
+
+        // checkboxes.forEach(checkbox => {
+        //     checkbox.addEventListener('change', function() {
+        //         if (this.checked) {
+        //             checkboxes.forEach(cb => {
+        //                 if (cb !== this) {
+        //                     cb.checked = false;
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
+
+
 
         function validatePassword() {
 
