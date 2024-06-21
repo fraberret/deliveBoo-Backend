@@ -40,7 +40,7 @@ class CousineController extends Controller
 
         $restaurants = Restaurant::whereHas('cousines', function ($query) use ($cuisinesArray) {
             $query->whereIn('name', $cuisinesArray);
-        })->with('cousines')->get();
+        }, '>=', count($cuisinesArray))->with('cousines')->get();
 
         return response()->json([
             'success' => true,
