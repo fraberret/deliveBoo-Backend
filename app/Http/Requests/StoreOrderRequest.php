@@ -27,7 +27,6 @@ class StoreOrderRequest extends FormRequest
             'customer_address' => 'required|string|max:100',
             'customer_telephone' => 'required|string|max:13',
             'customer_email' => 'nullable|email|max:255',
-            'date' => 'required|date',
             'total' => 'required|numeric|between:0,9999.99',
         ];
     }
