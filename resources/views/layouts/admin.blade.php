@@ -10,7 +10,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Deliveboo | @yield('title', config('app.name'))</title>
 
@@ -55,7 +57,8 @@
                                 href="{{ route('admin.dishes.index') }}">{{ __('Dishes') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav_link px-4" href="#">{{ __('Orders') }}</a>
+                            <a class="nav-link nav_link px-4"
+                                href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav_link px-4" href="#">{{ __('Statistics') }}</a>

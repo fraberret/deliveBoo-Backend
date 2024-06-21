@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -13,7 +16,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::id();
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+
+        $orders = Order::orderByDesc('date')->where('restaurant_id', $restaurant->id)->paginate(8);
+
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -37,7 +45,12 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        if (Auth::id() === $order->restaurant_id) {
+            $userId = Auth::id();
+            $restaurant = Restaurant::where('user_id', $userId)->first();
+            return view('admin.orders.show', compact('order', 'restaurant'));
+        }
+        abort(404, 'Page Not Found');
     }
 
     /**
