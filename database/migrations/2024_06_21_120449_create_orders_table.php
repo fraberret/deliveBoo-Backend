@@ -21,6 +21,7 @@ return new class extends Migration
             $table->char('customer_telephone', 13);
             $table->string('customer_email', 255)->nullable();
             $table->decimal('total', 7, 2);
+            $table->date('date');
             $table->timestamps();
         });
     }

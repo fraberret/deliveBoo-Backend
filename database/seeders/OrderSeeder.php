@@ -21,7 +21,8 @@ class OrderSeeder extends Seeder
             $order->customer_last_name = $faker->name();
             $order->customer_address = $faker->name();
             $order->customer_telephone = '+123456789123';
-            $order->customer_email = $faker->name() . '@mail.it';
+            $order->customer_email = $order->customer_name . '@mail.it';
+            $order->date = $faker->dateTime();
             $order->total = 1000;
             $order->save();
         }
