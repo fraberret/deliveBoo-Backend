@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Faker\Factory as FakerFactory;
 
 class OrderSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
+        $faker = FakerFactory::create('it_IT');
         $restaurantIds = range(1, 5);
 
         foreach ($restaurantIds as $restaurantId) {
@@ -21,10 +23,9 @@ class OrderSeeder extends Seeder
                 $order = new Order();
                 $order->restaurant_id = $restaurantId;
                 $order->customer_name = $faker->name();
-                $order->customer_last_name = $faker->name();
                 $order->customer_address = $faker->address();
-                $order->customer_telephone = '+' . $faker->numerify('############');
-                $order->customer_email = $order->customer_name . '@mail.it';
+                $order->customer_telephone = '+393' . $faker->numerify('#########');
+                $order->customer_email = strtolower(str_replace(' ', '', $order->customer_name)) . '@mail.com';
                 $order->date = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
                 $order->total = $faker->randomFloat(2, 10, 500);
                 $order->save();
