@@ -14,17 +14,22 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
-            $order = new Order();
-            $order->restaurant_id = 1;
-            $order->customer_name = $faker->name();
-            $order->customer_last_name = $faker->name();
-            $order->customer_address = $faker->name();
-            $order->customer_telephone = '+123456789123';
-            $order->customer_email = $order->customer_name . '@mail.it';
-            $order->date = $faker->dateTime();
-            $order->total = 1000;
-            $order->save();
+        $restaurantIds = range(1, 5);
+
+        foreach ($restaurantIds as $restaurantId) {
+            for ($i = 0; $i < 10; $i++) {
+                $order = new Order();
+                $order->restaurant_id = $restaurantId;
+                $order->customer_name = $faker->name();
+                $order->customer_last_name = $faker->name();
+                $order->customer_address = $faker->address();
+                $order->customer_telephone = '+123456789123';
+                $order->customer_email = $order->customer_name . '@mail.it';
+                $order->date = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
+                $order->total = 1000;
+                $order->save();
+            }
         }
     }
+
 }
