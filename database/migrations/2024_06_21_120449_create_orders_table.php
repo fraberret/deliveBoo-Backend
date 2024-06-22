@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
             $table->string('customer_name', 100);
-            $table->string('customer_last_name', 100);
             $table->string('customer_address', 100);
             $table->char('customer_telephone', 13);
             $table->string('customer_email', 255)->nullable();
