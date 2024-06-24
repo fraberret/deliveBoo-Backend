@@ -20,9 +20,9 @@
                     @forelse ($orders as $order)
                         <tr>
                             <td scope="row">{{ $order->restaurant->name }}</td>
-                            <td>{{ $order->date }}</td>
+                            <td>{{ $order->created_at }}</td>
                             <td>{{ $order->total }}</td>
-                            <td>{{ $order->customer_name }}</td>
+                            <td>{{ $order->customer_name }} {{ $order->customer_lastname }}</td>
                             <td>
                                 <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-primary btn-sm">Show</a>
                             </td>

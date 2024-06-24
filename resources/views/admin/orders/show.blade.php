@@ -14,7 +14,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <h3>Customer:</h3>
-                        <p>{{ $order->customer_name }} {{ $order->customer_last_name }}</p>
+                        <p>{{ $order->customer_name }} {{ $order->customer_lastname }}</p>
                     </div>
                     <div class="col-md-6">
                         <h3>To Deliver to:</h3>
@@ -32,7 +32,7 @@
                         <p><strong>Total: </strong>{{ $order->total }}€</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Date: </strong>{{ $order->date }}</p>
+                        <p><strong>Date: </strong>{{ $order->created_at }}</p>
                     </div>
                 </div>
             </div>
