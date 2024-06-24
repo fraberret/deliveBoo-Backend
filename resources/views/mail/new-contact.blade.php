@@ -1,12 +1,12 @@
 <x-mail::message>
-Hi, {{ $lead->name }}
+    Hi, {{ $lead->name }}
 
-{{-- Email: {{ $lead->email }} --}}
-<hr>
+    {{-- Email: {{ $lead->email }} --}}
+    <hr>
 
-Il ristorante ti avvisa che {{ $lead->message }}
+    Il {{ $lead->restaurant_name }} ti avvisa che {{ $lead->message }}
 
-Thanks,
+    Thanks,
 
-{{ config('app.name') }}
+    {{ config('app.name') }}
 </x-mail::message>

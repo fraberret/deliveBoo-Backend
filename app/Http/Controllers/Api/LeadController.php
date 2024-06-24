@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Lead;
 use App\Mail\NewContact;
+use App\Mail\MailRestaurant;
+use App\Models\Restaurant;
 
 class LeadController extends Controller
 {
@@ -15,10 +17,13 @@ class LeadController extends Controller
     {
         $data = $request->all();
 
+        $restaurant = Restaurant::where('name', $request->restaurant_name)->first();
+
         // validiamo i dati "a mano" per poter gestire la risposta
         $validator = Validator::make($data, [
             'name' => 'required',
             'email' => 'required|email',
+            'restaurant_name' => 'required|min:2|max:100',
             'message' => 'required'
         ]);
 
@@ -37,8 +42,10 @@ class LeadController extends Controller
         $new_lead->fill($data);
         $new_lead->save();
 
+        //$emails = [$request->email, $restaurant->email];
         // inviamo la mail all'admin del sito, passando il nuovo oggetto Lead
-        Mail::to('info@boolpress.com')->send(new NewContact($new_lead));
+        Mail::to($request->email)->send(new NewContact($new_lead));
+        Mail::to( $restaurant->email)->send(new MailRestaurant($new_lead));
 
         return response()->json([
             'success' => true,
