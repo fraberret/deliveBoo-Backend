@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CousineController;
+use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -32,3 +33,6 @@ Route::get('cousines/{multipleSearch}', [CousineController::class, 'filterByMult
 
 Route::get('payments/token', [PaymentController::class, 'generateToken']);
 Route::post('payments/checkout', [PaymentController::class, 'makePayment']);
+
+
+Route::post('/contacts', [LeadController::class, 'store']);
