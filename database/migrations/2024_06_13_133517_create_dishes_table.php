@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug', 150);
             $table->text('description')->nullable();
             $table->decimal('price', 6, 2)->nullable();
-            $table->boolean('visible')->default(false);
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }
