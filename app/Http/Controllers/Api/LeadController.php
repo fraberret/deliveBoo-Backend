@@ -45,7 +45,7 @@ class LeadController extends Controller
         //$emails = [$request->email, $restaurant->email];
         // inviamo la mail all'admin del sito, passando il nuovo oggetto Lead
         Mail::to($request->email)->send(new NewContact($new_lead));
-        Mail::to( $restaurant->email)->send(new MailRestaurant($new_lead));
+        Mail::to($restaurant->user->email)->send(new MailRestaurant($new_lead));
 
         return response()->json([
             'success' => true,

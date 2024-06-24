@@ -18,39 +18,13 @@ class MailRestaurant extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($_lead)
+    public function __construct($lead)
     {
-        $this->lead = $_lead;
+        $this->lead = $lead;
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope()
+    public function build()
     {
-        return new Envelope(
-            /* replyTo: $this->lead->address, */
-            subject: 'Nuovo contatto',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content()
-    {
-        return new Content(
-            markdown: 'mail.new-contact',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
+        return $this->subject('Nuovo ordine')->markdown('mail.mail-restaurant', ['lead' => $this->lead]);
     }
 }
