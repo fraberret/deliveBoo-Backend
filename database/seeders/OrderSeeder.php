@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
                 $order->customer_address = $faker->address();
                 $order->customer_telephone = '+393' . $faker->numerify('#########');
                 $order->customer_email = strtolower(str_replace(' ', '', $order->customer_name . $order->customer_lastname)) . '@mail.com';
-                $order->total = $faker->randomFloat(2, 10, 500);
+                $order->total = 0;
                 $order->created_at = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
                 $order->updated_at = $order->created_at;
                 $order->save();
