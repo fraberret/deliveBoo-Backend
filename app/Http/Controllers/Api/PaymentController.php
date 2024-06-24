@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentRequest;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function makePayment(Request $request)
+    public function makePayment(PaymentRequest $request)
     {
         $result = $this->gateway->transaction()->sale([
             'amount' => $request->amount,
