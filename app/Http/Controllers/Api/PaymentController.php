@@ -30,4 +30,29 @@ class PaymentController extends Controller
             'token' => $token
         ]);
     }
+
+    public function makePayment(Request $request)
+    {
+        $result = $this->gateway->transaction()->sale([
+            'amount' => $request->amount,
+            'paymentMethodNonce' => $request->token,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        if ($result->success) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Transazione eseguita con successo',
+                'transaction' => $result->transaction
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Transazione fallita',
+                'errors' => $result->errors->deepAll()
+            ]);
+        }
+    }
 }
