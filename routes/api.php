@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\RestaurantController;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +29,6 @@ Route::get('restaurants/{searchTerm}', [RestaurantController::class, 'filter']);
 Route::get('cousines', [CousineController::class, 'index']);
 // Route::get('cousines/{searchCousine}', [CousineController::class, 'filterByCousine']);
 Route::get('cousines/{multipleSearch}', [CousineController::class, 'filterByMultipleCousine']);
+
+Route::get('payments/token', [PaymentController::class, 'generateToken']);
+Route::post('payments/checkout', [PaymentController::class, 'makePayment']);
