@@ -29,7 +29,7 @@ class PaymentRequest extends FormRequest
             'customer_name' => 'required|string|min:3|max:255',
             'customer_lastname' => 'required|string|min:3|max:255',
             'customer_address' => 'string|max:255',
-            'customer_email' => 'required|email|max:255',
+            'customer_email' => 'required',
             'customer_telephone' => 'required|string|max:15',
         ];
     }
