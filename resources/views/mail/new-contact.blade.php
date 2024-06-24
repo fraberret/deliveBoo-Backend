@@ -1,12 +1,10 @@
 <x-mail::message>
-Introduction
-Sender: {{ $lead->name }}
+Hi, {{ $lead->name }}
 
-Email: {{ $lead->email }}
+{{-- Email: {{ $lead->email }} --}}
+<hr>
 
-Message
-
-{{ $lead->message }}
+Il ristorante ti avvisa che {{ $lead->message }}
 
 Thanks,
 
