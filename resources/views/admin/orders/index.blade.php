@@ -5,36 +5,50 @@
 @section('content')
     <div class="container">
         @include('admin.partials.session-message')
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Restaurant</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Total Price</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($orders as $order)
-                        <tr>
-                            <td scope="row">{{ $order->restaurant->name }}</td>
-                            <td>{{ $order->created_at }}</td>
-                            <td>{{ $order->total }}</td>
-                            <td>{{ $order->customer_name }} {{ $order->customer_lastname }}</td>
-                            <td>
-                                <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-primary btn-sm">Show</a>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center">No orders available</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+        <div class="dishes">
+            <div class="cols_heading">
+                <div class="name">Restaurant</div>
+                <div class="name">Date</div>
+                <div class="name">Total Price</div>
+                <div class="name">Customer Name</div>
+                <div class="actions">Actions</div>
+            </div>
+            <div class="rows">
+                @forelse ($orders as $order)
+                    <div class="dish">
+                        <div class="name">{{ $order->restaurant->name }}</div>
+                        <div class="name">{{ $order->created_at }}</div>
+                        <div class="price">{{ $order->total }} €</div>
+                        <div class="name">{{ $order->customer_name }} {{ $order->customer_lastname }}</div>
+                        <div class="actions">
+                            <a href="{{ route('admin.orders.show', $order) }}"><img width="23"
+                                    src="{{ asset('img/icons/eye.png') }}" alt="eye icon" class="mobile_hidden"></a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="no_dishes">
+                        Sorry, no orders to show.
+                    </div>
+                @endforelse
+            </div>
+
+            @if ($orders->hasPages())
+                <div class="bottom">
+                    <div class="pagination">
+                        {{ $orders->links('pagination::bootstrap-5') }}
+                    </div>
+                </div>
+            @else
+                <div class="bottom_no_pagination">
+                </div>
+            @endif
         </div>
+
+
+
+
+
+    </div>
 
 
     </div>
