@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use App\Models\Lead;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -13,31 +14,34 @@ class NewContact extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $lead;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($_lead)
     {
-        //
+        $this->lead = $_lead;
     }
 
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
+    public function envelope()
     {
         return new Envelope(
-            subject: 'New Contact',
+            replyTo: $this->lead->address,
+            subject: 'Nuovo contatto',
         );
     }
 
     /**
      * Get the message content definition.
      */
-    public function content(): Content
+    public function content()
     {
         return new Content(
-            markdown: 'mail.new-contact',
+            view: 'emails.new-contact-mail',
         );
     }
 
