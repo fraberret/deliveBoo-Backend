@@ -110,6 +110,7 @@
                                         @endforeach
 
                                     </div>
+                                    <div id="validation-error" class="text-danger"></div>
                                     <div id="cousines-error" class="alert alert-danger" style="display: none;"></div>
                                     @error('cousines')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -162,6 +163,8 @@
                                             class="form-control @error('logo') is-invalid @enderror" name="logo"
                                             value="{{ old('logo') }}" autocomplete="logo" autofocus>
 
+
+
                                         @error('logo')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -212,7 +215,7 @@
                 /* console.log("Form trovato: ", form); */
                 form.addEventListener("submit", function(event) {
                     const checkboxes = document.querySelectorAll('input[name="cousines[]"]:checked');
-                    const errorDiv = document.getElementById("cousines-error");
+                    const errorDiv = document.getElementById("validation-error");
                     if (checkboxes.length === 0) {
                         errorDiv.textContent = "Select at least one cousine type.";
                         errorDiv.style.display = "block";
@@ -223,51 +226,6 @@
                 });
             }
         });
-
-        // function handleData() {
-        //     var form_data = new FormData(document.querySelector("form"));
-
-        //     if (!form_data.has("cousines[]")) {
-        //         document.getElementById("chk_option_error").style.visibility = "visible";
-        //     } else {
-        //         document.getElementById("chk_option_error").style.visibility = "hidden";
-        //     }
-        //     return false;
-        // }
-
-
-        // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        // let checkedCount = 0
-
-        // checkboxes.forEach(checkbox => {
-        //     checkbox.addEventListener('click', function() {
-        //         if (checkbox.checked) {
-        //             checkedCount += 1
-        //         } else {
-        //             checkedCount -= 1
-        //         }
-        //         console.log(checkedCount);
-        //         if (checkedCount === 0) {
-        //             checkbox.setCustomValidity("Select one cousine")
-        //         }
-        //     });
-        // });
-
-
-
-        // checkboxes.forEach(checkbox => {
-        //     checkbox.addEventListener('change', function() {
-        //         if (this.checked) {
-        //             checkboxes.forEach(cb => {
-        //                 if (cb !== this) {
-        //                     cb.checked = false;
-        //                 }
-        //             });
-        //         }
-        //     });
-        // });
-
 
 
         function validatePassword() {
