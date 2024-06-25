@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+        <div class="banner">
+            <div class="text">
+                <h6>Your Chart</h6>
+                <h2>See your charts relative with your orders</h2>
+            </div>
+        </div>
         <div class="my-3">
             <canvas id="myChart" style="width:100%;max-width:200px;max-height:200px;" class="mx-auto "></canvas>
         </div>

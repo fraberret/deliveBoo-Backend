@@ -5,6 +5,12 @@
 @section('content')
     <div class="container">
         @include('admin.partials.session-message')
+        <div class="banner">
+            <div class="text">
+                <h6>all orders</h6>
+                <h2>See all your orders here!</h2>
+            </div>
+        </div>
         <div class="dishes">
             <h2 class="mb-3">{{ $restaurant->name }}</h2>
             <div class="cols_heading">

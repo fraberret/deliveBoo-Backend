@@ -61,7 +61,7 @@
                                 href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav_link px-4"
+                            <a class="nav-link nav_link px-4  {{ Request::is('admin/statistics') ? 'current_page' : '' }}"
                                 href="{{ route('admin.statistics.index') }}">{{ __('Statistics') }}</a>
                         </li>
 
