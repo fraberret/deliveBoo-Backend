@@ -21,7 +21,7 @@ class OrderController extends Controller
 
         $orders = Order::orderByDesc('created_at')->where('restaurant_id', $restaurant->id)->paginate(5);
 
-        return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders', 'restaurant'));
     }
 
     /**

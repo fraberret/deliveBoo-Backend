@@ -6,17 +6,16 @@
     <div class="container">
         @include('admin.partials.session-message')
         <div class="dishes">
+            <h2>{{ $restaurant->name }}</h2>
             <div class="cols_heading">
-                <div class="name">Restaurant</div>
+                <div class="name">Customer Name</div>
                 <div class="name">Date</div>
                 <div class="name">Total Price</div>
-                <div class="name">Customer Name</div>
                 <div class="actions">Actions</div>
             </div>
             <div class="rows">
                 @forelse ($orders as $order)
                     <div class="dish">
-                        <div class="name">{{ $order->restaurant->name }}</div>
                         <div class="name">{{ $order->created_at }}</div>
                         <div class="price">{{ $order->total }} €</div>
                         <div class="name">{{ $order->customer_name }} {{ $order->customer_lastname }}</div>
