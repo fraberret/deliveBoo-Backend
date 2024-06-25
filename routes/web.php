@@ -3,6 +3,7 @@
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatisticController;
 use App\Mail\NewContact;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'verified'])
         ]);
 
         Route::resource('orders', OrderController::class);
+        Route::resource('statistics', StatisticController::class);
     });
 
 Route::middleware('auth')->group(function () {

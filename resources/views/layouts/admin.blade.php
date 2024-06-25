@@ -61,7 +61,8 @@
                                 href="{{ route('admin.orders.index') }}">{{ __('Orders') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav_link px-4" href="#">{{ __('Statistics') }}</a>
+                            <a class="nav-link nav_link px-4"
+                                href="{{ route('admin.statistics.index') }}">{{ __('Statistics') }}</a>
                         </li>
 
                     </ul>
@@ -113,6 +114,7 @@
         <main class="">
             @yield('content')
         </main>
+
     </div>
 </body>
 
