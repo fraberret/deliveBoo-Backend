@@ -19,6 +19,12 @@ class DishOrderSeeder extends Seeder
         $dishes = Dish::all();
 
         foreach ($orders as $order) {
+            $dishes = Dish::where('restaurant_id', $order->restaurant_id)->get();
+
+            if ($dishes->isEmpty()) {
+                continue;
+            }
+            
             $numDishes = min(rand(1, 5), $dishes->count());
             $selectedDishes = $dishes->random($numDishes);
             $orderTotal = 0;
