@@ -16,7 +16,7 @@
 
                 <h3 class="fw-bold"> {{ __('You are logged in!') }}</h3>
 
-                
+
                 <h6 class="dash-info mt-5">
                     <a class="text-decoration-none" style="color: var(--boo-primary)" href="{{ route('admin.orders.index') }}">
                         You have {{ count($orders) }} new orders
@@ -47,12 +47,18 @@
                     <li class="fw-semibold fs-4">
 
                         <div class="restaurant_image mb-2">
-                            @if (Str::startsWith($restaurant->logo, 'https://'))
-                                <img class="rounded-3" width="100" src="{{ $restaurant->logo }}" alt="">
-                            @elseif (Str::startsWith($restaurant->logo, '/img/'))
-                                <img class="rounded-3" width="100" src="{{ asset($restaurant->logo) }}" alt="">
+                            @if ($restaurant->logo)
+                                @if (Str::startsWith($restaurant->logo, 'https://'))
+                                    <img class="rounded-3" width="100" src="{{ $restaurant->logo }}" alt="">
+                                @elseif (Str::startsWith($restaurant->logo, '/img/'))
+                                    <img class="rounded-3" width="100" src="{{ asset($restaurant->logo) }}"
+                                        alt="">
+                                @else
+                                    <img class="rounded-3" width="100" src="{{ asset('storage/' . $restaurant->logo) }}"
+                                        alt="">
+                                @endif
                             @else
-                                <img class="rounded-3" width="100" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
+                                <img class="rounded-3" width="100" src="{{ asset('img/default.png') }}" alt="">
                             @endif
                         </div>
 
