@@ -14,8 +14,13 @@
             </h1>
             <div class="mt-4 actions">
                 @guest
-                    <a href="{{ route('login') }}" class="btn_primary">{{ __('Login') }}</a>
-                    <a href="{{ route('register') }}" class="btn_dark">{{ __('Register') }}</a>
+                    <a href="{{ route('login') }}" class="btn_primary">
+                        <img class="me-2" src="{{ asset('img/icons/login.png') }}" alt="user icon">{{ __('Login') }}
+                    </a>
+                    <a href="{{ route('register') }}" class="btn_dark">
+                        <img style="margin-bottom: 1px; margin-right: 5px" src="{{ asset('img/icons/user.png') }}"
+                            alt="user icon">{{ __('Register') }}
+                    </a>
                 @else
                     <a href="{{ url('dashboard') }}" class="btn_primary">{{ __('Dashboard') }}</a>
                 @endguest
