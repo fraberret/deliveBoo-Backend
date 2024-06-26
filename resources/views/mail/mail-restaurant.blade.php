@@ -1,10 +1,24 @@
 <x-mail::message>
-Hi, {{ $lead->name }}
+Hi, {{ $lead->restaurant_name }}
 
 {{-- Email: {{ $lead->email }} --}}
 <hr>
 
-Il {{ $lead->restaurant_name }} ti avvisa che {{ $lead->message }}
+You have receveid one order from {{ $lead->name }}
+
+Customer Email: {{$order->customer_email}}
+
+Customer Address: {{$order->customer_address}}
+
+Customer Telephone: {{$order->customer_telephone}}
+
+Dishes: {{$emailData['dish']}} pz. {{$emailData['quantity']}}
+
+Total: {{$order->total}}
+
+
+
+
 
 Thanks,
 

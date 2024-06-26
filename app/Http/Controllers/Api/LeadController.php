@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Lead;
 use App\Mail\NewContact;
 use App\Mail\MailRestaurant;
+use App\Models\Order;
 use App\Models\Restaurant;
 
 class LeadController extends Controller
@@ -18,6 +19,8 @@ class LeadController extends Controller
         $data = $request->all();
 
         $restaurant = Restaurant::where('name', $request->restaurant_name)->first();
+
+        $order = Order::where('customer_name', $request->name)->first();
 
         // validiamo i dati "a mano" per poter gestire la risposta
         $validator = Validator::make($data, [

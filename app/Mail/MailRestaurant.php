@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -25,6 +26,15 @@ class MailRestaurant extends Mailable
 
     public function build()
     {
-        return $this->subject('Nuovo ordine')->markdown('mail.mail-restaurant', ['lead' => $this->lead]);
+        $order = Order::orderByDesc('id')->with('dishes')->first();
+
+        foreach ($order->dishes as $dish) {
+            $emailData = [
+                'dish' => $dish->name,
+                'quantity' => $dish->pivot->quantity,
+            ];
+        }
+
+        return $this->subject('Nuovo ordine')->markdown('mail.mail-restaurant', ['lead' => $this->lead, 'order' => $order, 'emailData' => $emailData]);
     }
 }
