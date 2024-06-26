@@ -1,30 +1,25 @@
 <x-mail::message>
-Hi, {{ $lead->restaurant_name }}
+<h2>Hi, {{ $lead->restaurant_name }}</h2>
 
-{{-- Email: {{ $lead->email }} --}}
-<hr>
+<p>You have received an order from {{ $lead->name }}.</p>
 
-You have receveid one order from {{ $lead->name }}
-
-Customer Email: {{$order->customer_email}}
-
-Customer Address: {{$order->customer_address}}
-
-Customer Telephone: {{$order->customer_telephone}}
-
+<h3>Order Details:</h3>
 <ul>
     @foreach ($order->dishes as $dish)
-    <li>{{$dish->name}} pz. {{$dish->pivot->quantity}}</li>    
+        <li>{{ $dish->name }} - {{ $dish->pivot->quantity }} pz.</li>
     @endforeach
 </ul>
 
-Total: {{$order->total}}
+<h3>Customer Details:</h3>
+<ul>
+    <li><strong>Email:</strong> {{ $order->customer_email }}</li>
+    <li><strong>Address:</strong> {{ $order->customer_address }}</li>
+    <li><strong>Telephone:</strong> {{ $order->customer_telephone }}</li>
+</ul>
 
+<p><strong>Total:</strong> {{ $order->total }}€</p>
 
+<hr>
 
-
-
-Thanks,
-
-{{ config('app.name') }}
+<p>Thank you for using {{ config('app.name') }}.</p>
 </x-mail::message>

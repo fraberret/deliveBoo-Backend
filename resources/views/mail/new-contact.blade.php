@@ -1,18 +1,18 @@
 <x-mail::message>
-Hi, {{ $lead->name }}
-{{-- Email: {{ $lead->email }} --}}
+<h2>Hi, {{ $lead->name }}</h2>
 
-{{ $lead->restaurant_name }} let you know{{ $lead->message }}
+<p>{{ $lead->restaurant_name }} wants to let you know:</p>
+<p>{{ $lead->message }}</p>
 
+<h3>Order Details:</h3>
 <ul>
     @foreach ($order->dishes as $dish)
-    <li>{{$dish->name}} pz. {{$dish->pivot->quantity}}</li>    
+        <li>{{ $dish->name }} - {{ $dish->pivot->quantity }} pz.</li>
     @endforeach
 </ul>
 
-Total: {{$order->total}}
+<p><strong>Total:</strong> {{ $order->total }}€</p>
 
-Thanks,
-
-{{ config('app.name') }}
+<p>Thanks,</p>
+<p>{{ config('app.name') }}</p>
 </x-mail::message>
