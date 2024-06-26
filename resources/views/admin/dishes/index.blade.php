@@ -36,7 +36,7 @@
                                         <img src="{{ asset('storage/' . $dish->cover_image) }}" alt="cover image">
                                     @endif
                                 @else
-                                    <img src="{{ asset('img/logo-sad.png') }}" alt="cover image">
+                                    <img src="{{ asset('img/default.png') }}" alt="cover image">
                                 @endif
                             </div>
                         </a>

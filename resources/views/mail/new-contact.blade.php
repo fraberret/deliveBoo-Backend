@@ -2,7 +2,7 @@
 Hi, {{ $lead->name }}
 {{-- Email: {{ $lead->email }} --}}
 
-{{ $lead->restaurant_name }} warns you that {{ $lead->message }}
+{{ $lead->restaurant_name }} let you know{{ $lead->message }}
 
 <ul>
     @foreach ($order->dishes as $dish)
