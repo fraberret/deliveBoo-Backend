@@ -12,13 +12,15 @@
             </div>
         </div>
         <div class="orders">
-            <h2>{{ $restaurant->name }}</h2>
-            <div class="cols_heading">
-                <div class="name">Customer Name</div>
-                <div class="date">Date</div>
-                <div class="price">Total Price</div>
-                <div class="actions">Actions</div>
-            </div>
+            @if (count($orders) > 0)
+                <h2>{{ $restaurant->name }}</h2>
+                <div class="cols_heading">
+                    <div class="name">Customer Name</div>
+                    <div class="date">Date</div>
+                    <div class="price">Total Price</div>
+                    <div class="actions">Actions</div>
+                </div>
+            @endif
             <div class="rows">
                 @forelse ($orders as $order)
                     <div class="order">

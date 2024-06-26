@@ -8,17 +8,24 @@
                 <h2>See your charts relative with your orders</h2>
             </div>
         </div>
-        <div class="my-3">
-            <canvas id="myChart" style="width:100%;max-width:200px;max-height:200px;" class="mx-auto "></canvas>
-        </div>
+        @if (count($orders) > 1)
+            <div class="my-3">
+                <canvas id="myChart" style="width:100%;max-width:200px;max-height:200px;" class="mx-auto "></canvas>
+            </div>
 
-        <div class="my-3">
-            <canvas id="myChart2" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto "></canvas>
-        </div>
+            <div class="my-3">
+                <canvas id="myChart2" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto "></canvas>
+            </div>
 
-        <div class="my-3">
-            <canvas id="myChart3" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto"></canvas>
-        </div>
+            <div class="my-3">
+                <canvas id="myChart3" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto"></canvas>
+            </div>
+        @else
+            <div class="d-flex justify-content-center flex-column align-items-center p-5">
+                <img src="{{ asset('img/logo-sad.png') }}" width="300" class="p-5" alt="">
+                <h3>Sorry you don't have orders</h3>
+            </div>
+        @endif
 
     </div>
 

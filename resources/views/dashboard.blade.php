@@ -26,10 +26,10 @@
                     You currently have {{ count($dishes) }} dishes
                 </h6>
                 <div class="dishes-box-dash d-flex">
-                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-transparent border">
+                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-light border">
                         See all
                     </a>
-                    <a href="{{ route('admin.dishes.create') }}" class="btn btn-transparent border ms-3">
+                    <a href="{{ route('admin.dishes.create') }}" class="btn btn-light border ms-3">
                         Create a new one
                     </a>
                 </div>

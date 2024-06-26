@@ -15,13 +15,15 @@
             </div>
         </div>
         <div class="dishes">
-            <div class="cols_heading">
-                <div class="image"></div>
-                <div class="name">Name</div>
-                <div class="price">Price</div>
-                <div class="visible">Visibility</div>
-                <div class="actions"></div>
-            </div>
+            @if (count($dishes) > 0)
+                <div class="cols_heading">
+                    <div class="image"></div>
+                    <div class="name">Name</div>
+                    <div class="price">Price</div>
+                    <div class="visible">Visibility</div>
+                    <div class="actions"></div>
+                </div>
+            @endif
             <div class="rows">
                 @forelse ($dishes as $dish)
                     <div class="dish">
