@@ -1,0 +1,90 @@
+@use './variables' as *;
+
+
+.orders {
+    margin-bottom: 15rem;
+    width: 100%;
+    background-color: $boo-gray-800;
+    padding: 4rem 2.6rem 3rem 2.6rem;
+    border-radius: 2rem;
+    color: $boo-lighter;
+    position: relative;
+
+    h2 {
+        margin-bottom: 2rem;
+        color: $boo-primary;
+    }
+
+
+    .cols_heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: .4rem;
+        color: $boo-gray-500;
+        font-size: .9rem;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px solid $boo-gray-700;
+        // border-bottom: 1px solid black;
+
+        div {
+            width: 100%;
+        }
+
+        .actions {
+            width: 30%;
+            display: flex;
+            justify-content: end;
+        }
+    }
+
+    .order {
+        border-bottom: 1px solid $boo-gray-700;
+        // border-bottom: 1px solid black;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .9rem;
+
+        div {
+            width: 100%;
+        }
+
+        .actions {
+            width: 30%;
+            display: flex;
+            justify-content: end;
+        }
+    }
+
+    .no_orders {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+        text-align: center;
+        margin: auto;
+    }
+}
+
+// media queries ----------------------------------------> 
+
+@media screen and (max-width: 780px) {
+
+    .price {
+        display: none;
+    }
+
+    .date {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 960px) {
+
+    .price {
+        display: none;
+    }
+}
