@@ -96,7 +96,7 @@
                                 </div>
 
                                 {{-- Cousines --}}
-                                <div class="mb-3">
+                                <div class="mb-3 overflow-auto">
                                     <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
                                     <br>
                                     <div class="mb-3 btn-group cousine" role="group" aria-label="cousines"
