@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -23,6 +24,8 @@ class NewContact extends Mailable
 
     public function build()
     {
-        return $this->subject('Nuovo contatto')->markdown('mail.new-contact', ['lead' => $this->lead]);
+        $order = Order::orderByDesc('id')->with('dishes')->first();
+
+        return $this->subject('Nuovo contatto')->markdown('mail.new-contact', ['lead' => $this->lead, 'order' => $order]);
     }
 }

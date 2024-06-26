@@ -12,7 +12,11 @@ Customer Address: {{$order->customer_address}}
 
 Customer Telephone: {{$order->customer_telephone}}
 
-Dishes: {{$emailData['dish']}} pz. {{$emailData['quantity']}}
+<ul>
+    @foreach ($order->dishes as $dish)
+    <li>{{$dish->name}} pz. {{$dish->pivot->quantity}}</li>    
+    @endforeach
+</ul>
 
 Total: {{$order->total}}
 
