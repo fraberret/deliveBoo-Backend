@@ -32,7 +32,7 @@
             <div class="container ">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel ps-2">
-                        <img src="{{ asset('img/logo-deliveboo.png') }}" alt="app logo">
+                        <img width="180" src="{{ asset('img/logo-deliveboo-back.png') }}" alt="app logo">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>

@@ -2,7 +2,7 @@
 
 
 .nav_link {
-    color: $boo-gray-700;
+    color: $boo-gray-300;
     font-weight: 500;
     letter-spacing: .5px;
     font-size: .9rem;
@@ -11,7 +11,7 @@
     justify-content: center;
 
     &:hover {
-        color: $boo-darker;
+        color: $boo-gray-500;
     }
 
     &::after {
@@ -26,7 +26,7 @@
     }
 
     &:hover::after {
-        background-color: $boo-gray-600;
+        background-color: $boo-gray-500;
     }
 }
 
@@ -41,11 +41,15 @@
 }
 
 .user_nav_link {
-    color: $boo-darker;
+    color: $boo-gray-300;
     font-weight: 600;
     letter-spacing: .5px;
     font-size: .85rem;
     text-transform: capitalize;
+
+    &:hover {
+        color: $boo-gray-500;
+    }
 }
 
 .user_nav_link::after {

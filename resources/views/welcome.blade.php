@@ -7,12 +7,12 @@
     <div class="jumbotron p-5 mb-4">
         <div class="container py-5">
             <div class="d-flex align-items-center">
-                <h2 class="display-3 fw-bold">
+                <h2 class="display-3 text-secondary fw-thin me-3">
                     Welcome to
                 </h2>
 
                 <div class="logo_laravel ps-2">
-                    <img src="{{ asset('img/logo-deliveboo-big.png') }}" width="300px" alt="app logo">
+                    <img width="300" src="{{ asset('img/logo-deliveboo-back.png') }}" alt="app logo">
                 </div>
             </div>
 
