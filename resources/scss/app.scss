@@ -1,11 +1,16 @@
 @use '~bootstrap/scss/bootstrap';
 @use './partials/header';
+@use './partials/welcome';
 @use './partials/banner';
 @use './partials/dishes';
 @use './partials/orders';
 @use './partials/dish';
 @use './partials/variables' as *;
 
+
+html {
+    scrollbar-color: $boo-gray-800 transparent;
+}
 
 body {
     font-family: "Poppins", sans-serif;
