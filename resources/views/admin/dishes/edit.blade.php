@@ -28,15 +28,15 @@
                     </div>
 
                     <div class="form_input d-flex align-items-center">
-                        <div class="me-3 ">
+                        <div class="me-3" style="width: 140px; aspect-ratio: 1;">
                             @if (Str::startsWith($dish->cover_image, 'https://'))
-                                <img class="rounded-circle" width="140" src="{{ $dish->cover_image }}"
-                                    alt="{{ $dish->name }} image">
+                                <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
+                                    src="{{ $dish->cover_image }}" alt="{{ $dish->name }} image">
                             @elseif (Str::startsWith($dish->cover_image, '/img'))
-                                <img class="rounded-circle" width="140" src="{{ asset($dish->cover_image) }}"
-                                    alt="{{ $dish->name }} image">
+                                <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
+                                    src="{{ asset($dish->cover_image) }}" alt="{{ $dish->name }} image">
                             @else
-                                <img class="rounded-circle" width="140"
+                                <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
                                     src="{{ asset('storage/' . $dish->cover_image) }}" alt="{{ $dish->name }} image">
                             @endif
                         </div>
