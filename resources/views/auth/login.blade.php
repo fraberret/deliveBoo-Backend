@@ -67,12 +67,12 @@
                         <a href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
-                        <a href="{{ route('register') }}">
-                            {{ __('Already have an account?') }}</a>
+                        {{-- <a href="{{ route('register') }}">
+                            {{ __('Already have an account?') }}</a> --}}
                     @endif
                 </div>
                 <button type="submit" class="border-0 btn_primary">
-                    {{ __('Login') }}
+                    <img class="me-2" src="{{ asset('img/icons/login.png') }}" alt="user icon">{{ __('Login') }}
                 </button>
             </div>
         </form>
