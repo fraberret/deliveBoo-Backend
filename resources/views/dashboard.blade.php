@@ -19,17 +19,17 @@
 
                 <h6 class="dash-info mt-5">
                     <a class="text-decoration-none" style="color: var(--boo-primary)" href="{{ route('admin.orders.index') }}">
-                        You have {{ count($orders) }} new orders
+                        You have <span style="color: white">{{ count($orders) }}</span> new orders
                     </a>
                 </h6>
                 <h6 class="dash-info mt-5">
-                    You currently have {{ count($dishes) }} dishes
-                </h6>
-                <div class="dishes-box-dash d-flex">
-                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-light border">
-                        See all
+                    <a href="{{ route('admin.dishes.index') }}" class="text-decoration-none"
+                        style="color: var(--boo-primary)">
+                        You currently have <span style="color: white">{{ count($dishes) }}</span> dishes
                     </a>
-                    <a href="{{ route('admin.dishes.create') }}" class="btn btn-light border ms-3">
+                </h6>
+                <div class="dishes-box-dash d-flex mt-3">
+                    <a href="{{ route('admin.dishes.create') }}" class="btn_primary text-decoration-none">
                         Create a new one
                     </a>
                 </div>
@@ -61,8 +61,7 @@
                                 <img class="rounded-3" width="100" src="{{ asset('img/default.png') }}" alt="">
                             @endif
                         </div>
-
-                        {{ $restaurant->name }}
+                        <h3>{{ $restaurant->name }}</h3>
                     </li>
                     <li>
                         @foreach ($restaurant->cousines as $cousine)
@@ -76,11 +75,11 @@
                         {{ $restaurant->address }}
                     </li>
                     <li>
-                        VAT: {{ $restaurant->piva }}
+                        <b>VAT:</b> {{ $restaurant->piva }}
                     </li>
                     <hr>
                     <li>
-                        {{ $restaurant->user->name }}
+                        <h6> {{ $restaurant->user->name }}</h6>
                     </li>
                     <li>
                         {{ $restaurant->user->email }}

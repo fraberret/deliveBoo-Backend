@@ -30,6 +30,18 @@
     }
 }
 
+.custom-hover {
+    font-weight: 500;
+    font-size: .9rem;
+    color: $boo-gray-400 !important;
+    font-family: "Poppins", sans-serif;
+}
+
+.custom-hover:hover {
+    background-color: #212529 !important;
+    color: $boo-primary !important;
+}
+
 .current_page,
 .current_page:hover {
     color: $boo-primary;
