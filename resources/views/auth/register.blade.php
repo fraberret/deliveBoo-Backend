@@ -5,7 +5,8 @@
 @section('content')
     <div class="container">
 
-        <form method="POST" class="form" id="registrationForm" action="{{ route('register') }}" enctype="multipart/form-data">
+        <form method="POST" class="form" id="registrationForm" action="{{ route('register') }}" enctype="multipart/form-data"
+            style="max-width: 1140px">
             @csrf
 
             <div class="top">
