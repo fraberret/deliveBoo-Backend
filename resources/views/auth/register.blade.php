@@ -102,7 +102,7 @@
                                     <div class="mb-3 btn-group cousine" role="group" aria-label="cousines"
                                         id="myCheckBox">
                                         @foreach ($cousines as $cousine)
-                                            <input name="cousines[]" type="checkbox" class="btn-check"
+                                            <input name="cousines[]" type="checkbox" class="btn-check" required
                                                 id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
                                             <label class="btn btn-outline-dark" for="cousine-{{ $cousine->id }}">
                                                 {{ $cousine->name }}
@@ -205,26 +205,32 @@
     </div>
 
     <script>
-        var password = document.getElementById("password"),
-            confirm_password = document.getElementById("password-confirm");
+        var password = document.getElementById("password")
+        let confirm_password = document.getElementById("password-confirm");
         let email = document.getElementById("email")
+        const checkboxes = document.querySelectorAll('input[name="cousines[]"]');
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.getElementById("registrationForm");
-            if (form) {
-                /* console.log("Form trovato: ", form); */
-                form.addEventListener("submit", function(event) {
-                    const checkboxes = document.querySelectorAll('input[name="cousines[]"]:checked');
-                    const errorDiv = document.getElementById("validation-error");
-                    if (checkboxes.length === 0) {
-                        errorDiv.textContent = "Select at least one cousine type.";
-                        errorDiv.style.display = "block";
-                        event.preventDefault();
-                    } else {
-                        errorDiv.style.display = "none";
-                    }
-                });
-            }
+        let checkedBoxes = 0
+
+        function updateRequiredAttribute() {
+            checkboxes.forEach(checkbox => {
+                if (checkedBoxes > 0) {
+                    checkbox.removeAttribute('required');
+                } else {
+                    checkbox.setAttribute('required', 'required');
+                }
+            });
+        };
+
+        checkboxes.forEach(check => {
+            check.addEventListener('change', () => {
+                if (check.checked) {
+                    checkedBoxes++;
+                } else {
+                    checkedBoxes--;
+                }
+                updateRequiredAttribute();
+            });
         });
 
 
