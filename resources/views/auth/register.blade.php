@@ -5,8 +5,8 @@
 @section('content')
     <div class="container">
 
-        <form method="POST" class="form" id="registrationForm" action="{{ route('register') }}" enctype="multipart/form-data"
-            style="max-width: 1140px">
+        <form method="POST" class="register_form" id="registrationForm" action="{{ route('register') }}"
+            enctype="multipart/form-data" style="max-width: 1140px">
             @csrf
 
             <div class="top">
@@ -170,9 +170,7 @@
                             {{-- Cousines --}}
                             <label for="cousines" class="form-label custom_label">{{ __('Cousines Type*') }}</label>
                             <div class="form_input_checkGroup h-100">
-                                <br>
-                                <div class="d-flex gap-3 flex-wrap " role="group" aria-label="cousines"
-                                    id="myCheckBox">
+                                <div class="d-flex flex-wrap " role="group" aria-label="cousines" id="myCheckBox">
                                     @foreach ($cousines as $cousine)
                                         <input name="cousines[]" type="checkbox" class="btn-check" required
                                             id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
