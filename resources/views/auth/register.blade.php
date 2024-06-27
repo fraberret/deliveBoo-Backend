@@ -233,7 +233,7 @@
         };
 
         checkboxes.forEach(check => {
-            checkbox.setCustomValidity('Please select at least one option.');
+            check.setCustomValidity('Please select at least one option.');
 
             check.addEventListener('change', () => {
                 if (check.checked) {
