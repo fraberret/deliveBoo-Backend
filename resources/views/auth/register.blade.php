@@ -161,8 +161,6 @@
                                         class="form-control @error('logo') is-invalid @enderror" name="logo"
                                         value="{{ old('logo') }}" autocomplete="logo" autofocus>
 
-
-
                                     @error('logo')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -170,9 +168,9 @@
                             </div>
 
                             {{-- Cousines --}}
-                            <div class="form_input_checkGroup">
+                            <div class="form_input_file ">
                                 <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
-                                <br>
+                                {{-- <br> --}}
                                 <div class="d-flex gap-2 flex-wrap" role="group" aria-label="cousines"
                                     id="myCheckBox">
                                     @foreach ($cousines as $cousine)
@@ -192,9 +190,6 @@
 
                             </div>
                         </div>
-
-
-
                     </div>
 
                 </div>
@@ -228,13 +223,18 @@
             checkboxes.forEach(checkbox => {
                 if (checkedBoxes > 0) {
                     checkbox.removeAttribute('required');
+                    checkbox.setCustomValidity('');
+
                 } else {
                     checkbox.setAttribute('required', 'required');
+                    checkbox.setCustomValidity('Please select at least one option.');
                 }
             });
         };
 
         checkboxes.forEach(check => {
+            checkbox.setCustomValidity('Please select at least one option.');
+
             check.addEventListener('change', () => {
                 if (check.checked) {
                     checkedBoxes++;
