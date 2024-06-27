@@ -3,205 +3,216 @@
 @section('title', 'Sign Up')
 
 @section('content')
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+    <div class="container">
 
-                    <div class="card-body">
-                        <form method="POST" id="registrationForm" action="{{ route('register') }}"
-                            enctype="multipart/form-data">
-                            @csrf
+        <form method="POST" class="form" id="registrationForm" action="{{ route('register') }}" enctype="multipart/form-data">
+            @csrf
 
-                            <div class="user">
-                                <h4 class="my-4">{{ __('Profile Info') }}</h4>
+            <div class="top">
+                <div class="title">
+                    <h5>{{ __('User Info') }}</h5>
+                    <hr>
+                    <img src="{{ asset('img/logo-emblem.png') }}" alt="">
+                </div>
 
-                                <div class="mb-4 row">
-                                    <label for="name"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
+                <div class="inputs">
 
-                                    <div class="col-md-6">
-                                        <input id="name" type="text"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required pattern="^[A-Za-z0-9 ]+$"
-                                            title="Only alphanumeric characters and spaces are allowed" minlength="2"
-                                            minlength="255" autocomplete="name" autofocus>
+                    <div class="row row-cols-md-2">
+                        <div class="form_input">
+                            <label for="name" class="col-form-label text-md-right">{{ __('Name*') }}</label>
 
-                                        @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div>
+                                <input id="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required pattern="^[A-Za-z0-9 ]+$"
+                                    title="Only alphanumeric characters and spaces are allowed" minlength="2"
+                                    minlength="255" autocomplete="name" autofocus>
 
-                                <div class="mb-4 row">
-                                    <label for="email"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required minlength="5" minlength="255"
-                                            autocomplete="email">
+                        <div class="form_input">
+                            <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
-                                        @error('email')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div>
+                                <input id="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required minlength="5" minlength="255"
+                                    autocomplete="email">
 
-                                <div class="mb-4 row">
-                                    <label for="password"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                                    <div class="col-md-6">
-                                        <input id="password" type="password"
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            required minlength="6" maxlength="25" autocomplete="new-password">
-                                        @error('password')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                        <div class="form_input">
+                            <label for="password" class="col-form-label text-md-right">{{ __('Password*') }}</label>
 
-                                <div class="mb-4 row">
-                                    <label for="password-confirm"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
+                            <div>
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    minlength="6" maxlength="25" autocomplete="new-password">
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control"
-                                            name="password_confirmation" autocomplete="new-password">
-                                    </div>
+                        <div class="form_input">
+                            <label for="password-confirm"
+                                class="col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
+
+                            <div>
+                                <input id="password-confirm" type="password" class="form-control"
+                                    name="password_confirmation" autocomplete="new-password">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="title">
+                        <h5>{{ __('Restaurant Info') }}</h5>
+                        <hr>
+                        <img src="{{ asset('img/logo-emblem.png') }}" alt="">
+                    </div>
+
+                    <div class="row row-cols-md-2">
+                        <div class="d-flex flex-column">
+                            {{-- Restaurant Name --}}
+                            <div class="form_input">
+                                <label for="restaurant_name"
+                                    class="col-form-label text-md-right">{{ __('Name*') }}</label>
+
+                                <div>
+                                    <input id="restaurant_name" type="text"
+                                        class="form-control @error('restaurant_name') is-invalid @enderror"
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required minlength="2"
+                                        maxlength="50" autocomplete="restaurant_name" autofocus>
+
+                                    @error('restaurant_name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
-                            <div class="restaurant">
-                                <h4 class="my-4">{{ __('Restaurant Info') }}</h4>
+                            {{-- Restaurant Address --}}
+                            <div class="form_input">
+                                <label for="address" class="col-form-label text-md-right">{{ __('Address*') }}</label>
 
-                                {{-- Restaurant Name --}}
-                                <div class="mb-4 row">
-                                    <label for="restaurant_name"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
+                                <div>
+                                    <input id="address" type="text"
+                                        class="form-control @error('address') is-invalid @enderror" name="address"
+                                        value="{{ old('address') }}" required minlength="5" maxlength="255"
+                                        autocomplete="address" autofocus>
 
-                                    <div class="col-md-6">
-                                        <input id="restaurant_name" type="text"
-                                            class="form-control @error('restaurant_name') is-invalid @enderror"
-                                            name="restaurant_name" value="{{ old('restaurant_name') }}" required
-                                            minlength="2" maxlength="50" autocomplete="restaurant_name" autofocus>
-
-                                        @error('restaurant_name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- Cousines --}}
-                                <div class="mb-3 overflow-auto">
-                                    <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
-                                    <br>
-                                    <div class="mb-3 btn-group cousine" role="group" aria-label="cousines"
-                                        id="myCheckBox">
-                                        @foreach ($cousines as $cousine)
-                                            <input name="cousines[]" type="checkbox" class="btn-check" required
-                                                id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
-                                            <label class="btn btn-outline-dark" for="cousine-{{ $cousine->id }}">
-                                                {{ $cousine->name }}
-                                            </label>
-                                        @endforeach
-
-                                    </div>
-                                    <div id="validation-error" class="text-danger"></div>
-                                    <div id="cousines-error" class="alert alert-danger" style="display: none;"></div>
-                                    @error('cousines')
+                                    @error('address')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                </div>
+                            </div>
+
+                            {{-- Restaurant Telephone number --}}
+                            <div class="form_input">
+                                <label for="telephone_number"
+                                    class="col-form-label text-md-right">{{ __('Telephone Number') }}</label>
+
+                                <div>
+                                    <input id="telephone_number" type="tel"
+                                        class="form-control @error('telephone_number') is-invalid @enderror"
+                                        name="telephone_number" value="{{ old('telephone_number') }}" autofocus
+                                        pattern="^\+[0-9]{12}$"
+                                        title="Telephone number must begin with a + followed by 12 digits.">
+
+                                    @error('telephone_number')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- Restaurant P.iva --}}
+                            <div class="form_input">
+                                <label for="piva" class="col-form-label text-md-right">{{ __('VAT*') }}</label>
+
+                                <div>
+                                    <input id="piva" type="text"
+                                        class="form-control @error('piva') is-invalid @enderror" name="piva"
+                                        value="{{ old('piva') }}" required autocomplete="piva" autofocus
+                                        pattern="[0-9]{11}" title="Please enter exactly 11 digits for P.Iva">
+
+                                    @error('piva')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column">
+                            {{-- Restaurant Logo --}}
+                            <div class="form_input_file">
+                                <label for="logo" class="col-form-label text-md-right">{{ __('Logo') }}</label>
+
+                                <div>
+                                    <input id="logo" type="file"
+                                        class="form-control @error('logo') is-invalid @enderror" name="logo"
+                                        value="{{ old('logo') }}" autocomplete="logo" autofocus>
+
+
+
+                                    @error('logo')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- Cousines --}}
+                            <div class="form_input_checkGroup">
+                                <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
+                                <br>
+                                <div class="d-flex gap-2 flex-wrap" role="group" aria-label="cousines"
+                                    id="myCheckBox">
+                                    @foreach ($cousines as $cousine)
+                                        <input name="cousines[]" type="checkbox" class="btn-check" required
+                                            id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
+                                        <label class="btn btn-outline-light " for="cousine-{{ $cousine->id }}">
+                                            {{ $cousine->name }}
+                                        </label>
+                                    @endforeach
 
                                 </div>
+                                <div id="validation-error" class="text-danger"></div>
+                                <div id="cousines-error" class="alert alert-danger" style="display: none;"></div>
+                                @error('cousines')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 
-                                {{-- Restaurant Address --}}
-                                <div class="mb-4 row">
-                                    <label for="address"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="address" type="text"
-                                            class="form-control @error('address') is-invalid @enderror" name="address"
-                                            value="{{ old('address') }}" required minlength="5" maxlength="255"
-                                            autocomplete="address" autofocus>
-
-                                        @error('address')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- Restaurant Telephone number --}}
-                                <div class="mb-4 row">
-                                    <label for="telephone_number"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Telephone Number') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="telephone_number" type="tel"
-                                            class="form-control @error('telephone_number') is-invalid @enderror"
-                                            name="telephone_number" value="{{ old('telephone_number') }}" autofocus
-                                            pattern="^\+[0-9]{12}$"
-                                            title="Telephone number must begin with a + followed by 12 digits.">
-
-                                        @error('telephone_number')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- Restaurant Logo --}}
-                                <div class="mb-4 row">
-                                    <label for="logo"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="logo" type="file"
-                                            class="form-control @error('logo') is-invalid @enderror" name="logo"
-                                            value="{{ old('logo') }}" autocomplete="logo" autofocus>
+                            </div>
+                        </div>
 
 
 
-                                        @error('logo')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                {{-- Restaurant P.iva --}}
-                                <div class="mb-4 row">
-                                    <label for="piva"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('VAT*') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="piva" type="text"
-                                            class="form-control @error('piva') is-invalid @enderror" name="piva"
-                                            value="{{ old('piva') }}" required autocomplete="piva" autofocus
-                                            pattern="[0-9]{11}" title="Please enter exactly 11 digits for P.Iva">
-
-                                        @error('piva')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <p class="text-secondary text-end">* = required fields </p>
-
-                                <div class="mb-4 row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </button>
-                                    </div>
-                                </div>
-                        </form>
                     </div>
+
                 </div>
-            </div>
-        </div>
+
+                <div class="bottom">
+                    <div class="d-flex">
+                        <img src="{{ asset('img/logo-emblem.png') }}" alt="">
+                        <p class="text-secondary text-end">* = required fields </p>
+                    </div>
+
+                    <button type="submit" class="border-0 btn_primary">
+                        {{ __('Register') }}
+                    </button>
+                </div>
+        </form>
+
+
+
+
     </div>
 
     <script>
