@@ -33,6 +33,7 @@
 .current_page,
 .current_page:hover {
     color: $boo-primary;
+    color: $boo-primary;
 
     &:hover::after,
     &::after {
@@ -54,6 +55,11 @@
 
 .user_nav_link::after {
     color: $boo-primary;
+}
+
+.auth_name {
+    color: $boo-gray-400;
+    margin-right: .5rem;
 }
 
 // .arrow_down {

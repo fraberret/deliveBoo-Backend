@@ -85,7 +85,7 @@
                                     class="nav-link user_nav_link d-flex align-items-center dropdown-toggle" href="#"
                                     role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     v-pre>
-                                    <span>{{ Auth::user()->name }}</span>
+                                    <span class="auth_name">{{ Auth::user()->name }}</span>
                                 </a>
                                 {{-- <div class="auth_avatar">
                                     <div class="auth_avatar_circle"></div>
