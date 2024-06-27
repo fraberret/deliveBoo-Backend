@@ -1,14 +1,14 @@
 @use './variables' as *;
 
 form {
-    max-width: 700px;
+    max-width: 680px;
     margin: auto;
     background-color: $boo-gray-800;
     border-radius: 2rem;
     // overflow: hidden;
     position: relative;
     color: $boo-lighter;
-    padding: 3rem 2.5rem;
+    padding: 2.5rem 2.2rem;
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
 
     .top {
@@ -19,7 +19,7 @@ form {
             padding-bottom: 1rem;
 
             h5 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
                 font-family: "Rubik", sans-serif;
                 font-weight: bold;
                 color: $boo-gray-500;
@@ -50,7 +50,6 @@ form {
                     padding-inline: 1.5rem;
                     color: $boo-primary;
                     padding-bottom: .4rem;
-                    font-size: 1.1rem;
                     text-transform: uppercase;
                     letter-spacing: 1px;
                     font-weight: 500;
@@ -125,9 +124,9 @@ form {
 
     .bottom {
         border-radius: 2rem;
-        padding: 6rem 3rem 2.4rem 3rem;
+        padding: 6rem 3rem 2.1rem 3rem;
         position: absolute;
-        bottom: -8rem;
+        bottom: -7.6rem;
         background-color: $boo-darker;
         width: 100%;
         z-index: -1;
