@@ -168,15 +168,16 @@
                             </div>
 
                             {{-- Cousines --}}
-                            <div class="form_input_file ">
-                                <label for="cousines" class="form-label">{{ __('Cousines Type*') }}</label>
-                                {{-- <br> --}}
-                                <div class="d-flex gap-2 flex-wrap" role="group" aria-label="cousines"
+                            <label for="cousines" class="form-label custom_label">{{ __('Cousines Type*') }}</label>
+                            <div class="form_input_checkGroup h-100">
+                                <br>
+                                <div class="d-flex gap-3 flex-wrap " role="group" aria-label="cousines"
                                     id="myCheckBox">
                                     @foreach ($cousines as $cousine)
                                         <input name="cousines[]" type="checkbox" class="btn-check" required
                                             id="cousine-{{ $cousine->id }}" value="{{ $cousine->id }}">
-                                        <label class="btn btn-outline-light " for="cousine-{{ $cousine->id }}">
+                                        <label class="btn btn-outline-light rounded-5 "
+                                            for="cousine-{{ $cousine->id }}">
                                             {{ $cousine->name }}
                                         </label>
                                     @endforeach

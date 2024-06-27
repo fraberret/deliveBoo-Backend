@@ -17,6 +17,7 @@
             align-items: end;
             padding-inline: 1.5rem;
             padding-bottom: 1rem;
+            white-space: nowrap;
 
             h5 {
                 font-size: 2.4rem;
@@ -38,6 +39,16 @@
                 transform: translateY(-16px);
                 margin-left: 1rem;
             }
+        }
+
+        .custom_label {
+            padding-inline: 1.5rem;
+            color: $boo-primary;
+            padding-bottom: .4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-top: 2.5rem;
         }
 
         .inputs {
@@ -133,7 +144,6 @@
             }
 
             .form_input_checkGroup {
-                margin-top: 2.5rem;
                 position: relative;
                 background-color: $boo-gray-700;
                 border-radius: 58px;
