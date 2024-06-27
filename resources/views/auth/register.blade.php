@@ -194,13 +194,19 @@
                 </div>
 
                 <div class="bottom">
-                    <div class="d-flex">
-                        <img src="{{ asset('img/logo-emblem.png') }}" alt="">
-                        <p class="text-secondary text-end">* = required fields </p>
+                    <div class="already">
+                        <a href="{{ route('login') }}">
+                            {{ __('Already have an account?') }}</a>
+
+                        <div class="required_fields d-flex align-items-start">
+                            <span>* </span>
+                            <h5> required fields</h5>
+                        </div>
                     </div>
 
                     <button type="submit" class="border-0 btn_primary">
-                        {{ __('Register') }}
+                        <img class="me-2" src="{{ asset('img/icons/login.png') }}"
+                            alt="user icon">{{ __('Register') }}
                     </button>
                 </div>
         </form>

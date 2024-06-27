@@ -10,6 +10,7 @@
     color: $boo-lighter;
     padding: 1rem 2.2rem 2.5rem 2.2rem;
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
+    margin-bottom: 20rem;
 
     .top {
         .title {
@@ -233,4 +234,33 @@
             }
         }
     }
+}
+
+.already {
+    margin-left: 1.3rem;
+
+    a {
+        color: $boo-secondary-dark;
+        color: $boo-gray-600;
+        text-decoration: none;
+        transition: .25s ease;
+        display: block;
+
+        &:hover {
+            color: $boo-secondary-dark;
+        }
+    }
+
+    .required_fields {
+        color: $boo-primary;
+        margin-top: .5rem;
+
+        h5 {
+            font-size: 1rem;
+        }
+    }
+
+    // a:nth-child(2) {
+    //     margin-top: .2rem;
+    // }
 }
