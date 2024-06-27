@@ -237,7 +237,8 @@
 }
 
 .already {
-    margin-left: 1.3rem;
+    // margin-left: 1.3rem;
+    margin-left: 0rem;
 
     a {
         color: $boo-secondary-dark;
@@ -263,4 +264,12 @@
     // a:nth-child(2) {
     //     margin-top: .2rem;
     // }
+}
+
+@media only screen and (max-width: 500px) {
+    .already {
+        a {
+            font-size: .9rem;
+        }
+    }
 }
