@@ -120,10 +120,18 @@
         text-align: center;
         margin: auto;
 
-        a{
+        a {
             color: $boo-primary;
         }
     }
+}
+
+.name-hover {
+    transition: color 1s ease;
+}
+
+.name-hover:hover {
+    color: $boo-primary !important;
 }
 
 .cols_heading,

@@ -43,7 +43,8 @@
                             </div>
                         </a>
                         <div class="name">
-                            <a href="{{ route('admin.dishes.show', $dish) }}" class="name text-decoration-none text-white">
+                            <a href="{{ route('admin.dishes.show', $dish) }}"
+                                class="name-hover text-decoration-none text-white">
                                 {{ $dish->name }}</a>
                         </div>
                         <div class="price">
