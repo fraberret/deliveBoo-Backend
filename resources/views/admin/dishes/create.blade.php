@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container my-5">
-        <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data" class="form"
+        <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data" class="large_form"
             style="max-width: 1140px">
             @csrf
             <div class="top">
@@ -61,11 +61,12 @@
                         @enderror
                     </div>
 
-                    <div class="form_input mb-5">
-                        <label for="visible" class="form-label">{{ __('Visible') }}</label>
+                    <div class="form_input mb-5 d-flex align-items-center gap-3">
+                        <label for="visible" style="padding-bottom: 0;"
+                            class="d-flex align-items-center">{{ __('Visible') }}</label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="visible" id="visible" value="1"
-                                {{ old('visible') ? 'checked' : '' }}>
+                            <input style="height: 29px;" class="form-check-input" type="checkbox" name="visible"
+                                id="visible" value="1" {{ old('visible') ? 'checked' : '' }}>
                         </div>
                         @error('visible')
                             <div class="text-danger py-2">

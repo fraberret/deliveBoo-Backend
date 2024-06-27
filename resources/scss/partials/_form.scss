@@ -1,6 +1,6 @@
 @use './variables' as *;
 
-.form {
+.large_form {
     max-width: 680px;
     margin: auto;
     background-color: $boo-gray-800;
@@ -10,6 +10,7 @@
     color: $boo-lighter;
     padding: 2.5rem 2.2rem;
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
+    margin-bottom: 20rem;
 
     .top {
         .title {

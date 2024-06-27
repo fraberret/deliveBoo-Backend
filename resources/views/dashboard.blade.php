@@ -29,7 +29,8 @@
                     </a>
                 </h6>
                 <div class="dishes-box-dash d-flex justify-content-center mt-3">
-                    <a href="{{ route('admin.dishes.create') }}" class="btn_primary text-decoration-none">
+                    <a style="padding: 1rem;" href="{{ route('admin.dishes.create') }}"
+                        class="btn_primary text-decoration-none">
                         Create a new one
                     </a>
                 </div>

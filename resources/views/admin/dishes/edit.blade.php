@@ -3,8 +3,8 @@
 @section('title', "Edit $dish->name")
 
 @section('content')
-    <div class="container my-5" style="margin-bottom">
-        <form action="{{ route('admin.dishes.update', $dish) }}" method="post" enctype="multipart/form-data" class="form"
+    <div class="container">
+        <form action="{{ route('admin.dishes.update', $dish) }}" method="post" enctype="multipart/form-data" class="large_form"
             style="max-width: 1140px">
             @csrf
             @method('PUT')
@@ -27,7 +27,7 @@
                         @enderror
                     </div>
 
-                    <div class="form_input d-flex align-items-center">
+                    <div class="form_input d-flex align-items-center mb-3 mt-5">
                         <div class="me-3" style="width: 140px; aspect-ratio: 1;">
                             @if (Str::startsWith($dish->cover_image, 'https://'))
                                 <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
@@ -41,7 +41,7 @@
                             @endif
                         </div>
 
-                        <div class="form_input">
+                        <div style="margin-top: 0;" class="form_input">
                             <label for="cover_image" class="form-label">{{ __('Cover Image') }}</label>
                             <div class="custom-file-input-wrapper d-flex align-items-center gap-3">
                                 <input type="file" class="form-control @error('cover_image') is-invalid @enderror"
@@ -76,12 +76,13 @@
                         @enderror
                     </div>
 
-                    <div class="form_input mb-5">
-                        <label for="visible" class="form-label">{{ __('Visible') }}</label>
+                    <div class="form_input mb-5 d-flex align-items-center gap-3">
+                        <label style="padding-bottom: 0;" for="visible"
+                            class="d-flex align-items-center">{{ __('Visible') }}</label>
                         <div class="form-check form-switch">
                             <input type="hidden" name="visible" value="0">
-                            <input class="form-check-input" type="checkbox" name="visible" id="visible" value="1"
-                                {{ old('visible', $dish->visible) ? 'checked' : '' }}>
+                            <input style="height: 29px;" class="form-check-input" type="checkbox" name="visible"
+                                id="visible" value="1" {{ old('visible', $dish->visible) ? 'checked' : '' }}>
                             @error('visible')
                                 <div class="text-danger py-2">
                                     {{ $message }}
