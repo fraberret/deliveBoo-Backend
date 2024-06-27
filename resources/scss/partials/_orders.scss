@@ -10,9 +10,34 @@
     color: $boo-lighter;
     position: relative;
 
-    h2 {
-        margin-bottom: 2rem;
-        color: $boo-primary;
+    .title {
+
+        h2 {
+            color: $boo-primary;
+            font-family: "Rubik", sans-serif;
+        }
+
+        .total_orders {
+            span:first-child {
+                color: $boo-gray-500;
+                display: inline-block;
+                margin-right: .5rem;
+            }
+
+            span:last-child {
+                display: inline-block;
+                color: $boo-primary;
+                background-color: $boo-darker;
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: normal;
+            }
+        }
     }
 
 
@@ -34,29 +59,61 @@
         }
 
         .actions {
-            width: 30%;
+            width: 36%;
             display: flex;
             justify-content: end;
+            white-space: nowrap;
         }
     }
 
     .order {
         border-bottom: 1px solid $boo-gray-700;
         // border-bottom: 1px solid black;
-        padding: 1rem 0;
+        padding: .5rem 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: .9rem;
+
+        .name {
+            font-weight: 600;
+            font-size: .9rem;
+            color: $boo-secondary-dark;
+            font-family: "Rubik", sans-serif;
+        }
 
         div {
             width: 100%;
         }
 
         .actions {
-            width: 30%;
+            width: 36%;
             display: flex;
             justify-content: end;
+
+            a {
+                display: flex;
+                align-items: end;
+                background-color: $boo-dark;
+                padding: .7rem 1.5rem;
+                border-radius: 50px;
+                text-decoration: none;
+                transition: .2s ease;
+
+                &:hover {
+                    background-color: $boo-darker;
+                }
+
+                img {
+                    display: block;
+                    margin-right: .5rem;
+                }
+
+                span {
+                    white-space: nowrap;
+                    color: $boo-gray-500;
+                }
+            }
         }
     }
 
