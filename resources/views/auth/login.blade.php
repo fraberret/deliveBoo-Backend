@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
 
-        <form method="POST" action="{{ route('login') }}">
+        <form class="form" method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="top">

@@ -1,6 +1,6 @@
 @use './variables' as *;
 
-form {
+.form {
     max-width: 680px;
     margin: auto;
     background-color: $boo-gray-800;
@@ -56,8 +56,8 @@ form {
                 }
 
                 input {
-                    height: 60px;
-                    border-radius: 60px;
+                    height: 58px;
+                    border-radius: 58px;
                     background-color: $boo-gray-700;
                     border-color: $boo-gray-700;
                     padding-inline: 2rem;
