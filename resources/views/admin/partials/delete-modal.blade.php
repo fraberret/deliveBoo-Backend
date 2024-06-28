@@ -3,7 +3,7 @@
 <div class="modal fade" id="modal-{{ $dish->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
     role="dialog" aria-labelledby="modalTitle-{{ $dish->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm modal-dialog-dark" role="document">
-        <div class="modal-content bg-dark text-light">
+        <div class="modal-content bg-dark text-light rounded-5">
             <div class="modal-header border-bottom-0">
                 <h5 class="modal-title" id="modalTitle-{{ $dish->id }}">
                     Delete dish
