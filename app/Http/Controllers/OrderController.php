@@ -19,9 +19,10 @@ class OrderController extends Controller
         $userId = Auth::id();
         $restaurant = Restaurant::where('user_id', $userId)->first();
 
-        $orders = Order::orderByDesc('created_at')->where('restaurant_id', $restaurant->id)->get();
+        $totalOrders = Order::where('restaurant_id', $restaurant->id)->count();
+        $orders = Order::orderByDesc('created_at')->where('restaurant_id', $restaurant->id)->paginate(20);
 
-        return view('admin.orders.index', compact('orders', 'restaurant'));
+        return view('admin.orders.index', compact('orders', 'restaurant', 'totalOrders'));
     }
 
     /**

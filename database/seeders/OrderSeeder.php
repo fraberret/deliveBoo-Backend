@@ -19,7 +19,7 @@ class OrderSeeder extends Seeder
         $restaurantIds = range(1, 5);
 
          foreach ($restaurantIds as $restaurantId) {
-            for ($i = 0; $i < 25; $i++) {
+            for ($i = 0; $i < 50; $i++) {
                 $order = new Order();
                 $order->restaurant_id = $restaurantId;
                 $order->customer_name = $faker->firstName();

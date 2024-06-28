@@ -18,7 +18,8 @@ class DashboardController extends Controller
         $dishes = Dish::orderByDesc('id')->where('restaurant_id', $restaurant->id)->get();
 
         $orders = Order::orderByDesc('created_at')->where('restaurant_id', $restaurant->id)->get();
+        $totalOrders = Order::where('restaurant_id', $restaurant->id)->count();
 
-        return view('dashboard', compact('userId', 'restaurant', 'dishes', 'orders'));
+        return view('dashboard', compact('userId', 'restaurant', 'dishes', 'orders', 'totalOrders'));
     }
 }

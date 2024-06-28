@@ -17,7 +17,7 @@
                     <h2>{{ $restaurant->name }}</h2>
                     <div class="total_orders">
                         <div class="d-flex align-items-center">
-                            <span>total orders:</span> <span>{{ count($orders) }}</span>
+                            <span>total orders:</span> <span>{{ $totalOrders }}</span>
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,16 @@
                         Sorry, no orders to show.
                     </div>
                 @endforelse
+                @if ($orders->hasPages())
+                    <div class="bottom">
+                        <div class="pagination">
+                            {{ $orders->links('pagination::bootstrap-5') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="bottom_no_pagination">
+                    </div>
+                @endif
             </div>
         </div>
 

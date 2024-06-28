@@ -19,7 +19,7 @@
 
                 <h6 class="dash-info mt-5">
                     <a class="text-decoration-none" style="color: var(--boo-primary)" href="{{ route('admin.orders.index') }}">
-                        You have <span style="color: white">{{ count($orders) }}</span> new orders
+                        You have <span style="color: white">{{ $totalOrders }}</span> orders
                     </a>
                 </h6>
                 <h6 class="dash-info mt-5">
