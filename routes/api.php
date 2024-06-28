@@ -36,3 +36,4 @@ Route::post('payments/checkout', [PaymentController::class, 'makePayment']);
 
 
 Route::post('/contacts', [LeadController::class, 'store']);
+

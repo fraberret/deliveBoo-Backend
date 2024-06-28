@@ -1,0 +1,22 @@
+@use './variables' as *;
+
+.img.not-found {
+    text-align: end;
+    margin-right: 1rem;
+}
+
+.not-found-img {
+    transform: scaleX(-1);
+    position: absolute;
+    right: 1rem;
+}
+
+a.not-found{
+    width: fit-content;
+    font-size: 1.5rem ;
+}
+
+h1.not-found{
+    font-size: 8rem;
+    color: $boo-primary;
+}
