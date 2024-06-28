@@ -19,16 +19,16 @@ class OrderSeeder extends Seeder
         $restaurantIds = range(1, 5);
 
          foreach ($restaurantIds as $restaurantId) {
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 25; $i++) {
                 $order = new Order();
                 $order->restaurant_id = $restaurantId;
                 $order->customer_name = $faker->firstName();
                 $order->customer_lastname = $faker->lastName();
-                $order->customer_address = $faker->address();
+                $order->customer_address = $faker->streetAddress();
                 $order->customer_telephone = '+393' . $faker->numerify('#########');
                 $order->customer_email = strtolower(str_replace(' ', '', $order->customer_name . $order->customer_lastname)) . '@mail.com';
                 $order->total = 0;
-                $order->created_at = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s');
+                $order->created_at = $faker->dateTimeBetween('-12 months', 'now')->format('Y-m-d H:i');
                 $order->updated_at = $order->created_at;
                 $order->save();
             }
