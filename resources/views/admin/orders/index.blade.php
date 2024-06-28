@@ -32,7 +32,7 @@
                 @forelse ($orders as $order)
                     <div class="order">
                         <div class="name">{{ $order->customer_name }} {{ $order->customer_lastname }}</div>
-                        <div class="date">{{ $order->created_at }}</div>
+                        <div class="date">{{ $order->created_at->format('Y-m-d H:i') }}</div>
                         <div class="price">{{ $order->total }} €</div>
                         <div class="actions">
                             <a href="{{ route('admin.orders.show', $order) }}">
