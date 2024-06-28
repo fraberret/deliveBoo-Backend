@@ -24,6 +24,7 @@
                 <div class="cols_heading">
                     <div class="name">Customer Name</div>
                     <div class="date">Date</div>
+                    <div class="date">Hour</div>
                     <div class="price">Total Price</div>
                     <div class="actions">Review Order</div>
                 </div>
@@ -32,7 +33,8 @@
                 @forelse ($orders as $order)
                     <div class="order">
                         <div class="name">{{ $order->customer_name }} {{ $order->customer_lastname }}</div>
-                        <div class="date">{{ $order->created_at->format('Y-m-d H:i') }}</div>
+                        <div class="date">{{ $order->created_at->format('D d/m/Y') }}</div>
+                        <div class="date">{{ $order->created_at->format('H:i') }}</div>
                         <div class="price">{{ $order->total }} €</div>
                         <div class="actions">
                             <a href="{{ route('admin.orders.show', $order) }}">
