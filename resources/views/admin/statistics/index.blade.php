@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', 'Statistics')
 @section('content')
     <div class="container">
         <div class="banner">
@@ -10,15 +10,11 @@
         </div>
         @if (count($orders) > 1)
             <div class="my-3">
-                <canvas id="myChart" style="width:100%;max-width:200px;max-height:200px;" class="mx-auto "></canvas>
+                <canvas id="myChart2" style="width:100%;" class="mx-auto  w-100"></canvas>
             </div>
 
             <div class="my-3">
-                <canvas id="myChart2" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto "></canvas>
-            </div>
-
-            <div class="my-3">
-                <canvas id="myChart3" style="width:100%;max-width:800px;max-height:800px;" class="mx-auto"></canvas>
+                <canvas id="myChart3" style="width:100%;" class="mx-auto w-100"></canvas>
             </div>
         @else
             <div class="d-flex justify-content-center flex-column align-items-center p-5">
@@ -33,11 +29,25 @@
 
     <script>
         let orders = {!! json_encode($orders->toArray()) !!};
+        console.log(orders);
         const ctx = document.getElementById('myChart');
         const ctx2 = document.getElementById('myChart2');
         const ctx3 = document.getElementById('myChart3');
         let secondChartYear = '2023'
         let thirdChartYear = '2024'
+
+        function totalOrders(year, month) {
+            let monthTotal = 0
+            let totalNumbOrders = orders.length
+            for (let i = 1; i <= totalNumbOrders; i++) {
+                if (orders[i - 1].created_at.startsWith(year + '-' + month)) {
+                    monthTotal += Number(orders[i - 1].total)
+                }
+            }
+
+            return monthTotal;
+        }
+
 
         function all2023Orders(year) {
             let allOrders = {
@@ -69,61 +79,51 @@
             return allOrders
         }
 
-        let orders24 = orders.filter(order => {
-            return order.created_at.startsWith('2024')
-        })
-
-        let orders23 = orders.filter(order => {
-            return order.created_at.startsWith('2023')
-        })
-
-        new Chart(ctx, {
-            type: 'polarArea',
-            data: {
-                labels: ['2023', '2024'],
-                datasets: [{
-                    label: '# Orders',
-                    data: [orders23.length, orders24.length],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
         new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                    'October', 'November', 'December'
+                labels: ['July', 'August', 'September',
+                    'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June',
                 ],
                 datasets: [{
-                    label: '# Orders from 2023',
-                    data: [all2023Orders(secondChartYear)[1],
-                        all2023Orders(secondChartYear)[2],
-                        all2023Orders(secondChartYear)[3],
-                        all2023Orders(secondChartYear)[4],
-                        all2023Orders(secondChartYear)[5],
-                        all2023Orders(secondChartYear)[6],
+                    label: '# Last Year Orders',
+                    data: [
                         all2023Orders(secondChartYear)[7],
                         all2023Orders(secondChartYear)[8],
                         all2023Orders(secondChartYear)[9],
                         all2023Orders(secondChartYear)[10],
                         all2023Orders(secondChartYear)[11],
-                        all2023Orders(secondChartYear)[12]
+                        all2023Orders(secondChartYear)[12],
+                        all2023Orders(thirdChartYear)[1],
+                        all2023Orders(thirdChartYear)[2],
+                        all2023Orders(thirdChartYear)[3],
+                        all2023Orders(thirdChartYear)[4],
+                        all2023Orders(thirdChartYear)[5],
+                        all2023Orders(thirdChartYear)[6],
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
                 }]
             },
             options: {
                 scales: {
+                    x: {
+                        grid: {
+                            color: '#1c1c1c'
+                        },
+                        ticks: {
+                            color: '#bfbfbf'
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        grid: {
+                            color: '#1c1c1c'
+                        },
+                        ticks: {
+                            color: '#bfbfbf'
+                        }
                     }
                 }
             }
@@ -132,31 +132,47 @@
         new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                    'October', 'November', 'December'
+                labels: ['July', 'August', 'September',
+                    'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June',
                 ],
                 datasets: [{
-                    label: '# Orders from 2024',
-                    data: [all2023Orders(thirdChartYear)[1],
-                        all2023Orders(thirdChartYear)[2],
-                        all2023Orders(thirdChartYear)[3],
-                        all2023Orders(thirdChartYear)[4],
-                        all2023Orders(thirdChartYear)[5],
-                        all2023Orders(thirdChartYear)[6],
-                        all2023Orders(thirdChartYear)[7],
-                        all2023Orders(thirdChartYear)[8],
-                        all2023Orders(thirdChartYear)[9],
-                        all2023Orders(thirdChartYear)[10],
-                        all2023Orders(thirdChartYear)[11],
-                        all2023Orders(thirdChartYear)[12]
+                    label: '# Last Year Total Earnings',
+                    data: [
+                        totalOrders('2023', '07'),
+                        totalOrders('2023', '08'),
+                        totalOrders('2023', '09'),
+                        totalOrders('2023', '10'),
+                        totalOrders('2023', '11'),
+                        totalOrders('2023', '12'),
+                        totalOrders('2024', '01'),
+                        totalOrders('2024', '02'),
+                        totalOrders('2024', '03'),
+                        totalOrders('2024', '04'),
+                        totalOrders('2024', '05'),
+                        totalOrders('2024', '06'),
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    backdropColor: 'red'
                 }]
             },
             options: {
                 scales: {
+                    x: {
+                        grid: {
+                            color: '#1c1c1c'
+                        },
+                        ticks: {
+                            color: '#bfbfbf'
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        grid: {
+                            color: '#1c1c1c'
+                        },
+                        ticks: {
+                            color: '#bfbfbf'
+                        }
                     }
                 }
             }
