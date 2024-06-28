@@ -28,7 +28,7 @@ class OrderSeeder extends Seeder
                 $order->customer_telephone = '+393' . $faker->numerify('#########');
                 $order->customer_email = strtolower(str_replace(' ', '', $order->customer_name . $order->customer_lastname)) . '@mail.com';
                 $order->total = 0;
-                $order->created_at = $faker->dateTimeBetween('-12 months', 'now')->format('Y-m-d H:i');
+                $order->created_at = $faker->dateTimeBetween('-12 months', 'now')->format('Y-m-d') . ' ' . $faker->numberBetween(18, 22) . ':' . $faker->numberBetween(0, 59);
                 $order->updated_at = $order->created_at;
                 $order->save();
             }
