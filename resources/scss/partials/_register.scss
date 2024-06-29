@@ -8,7 +8,7 @@
     // overflow: hidden;
     position: relative;
     color: $boo-lighter;
-    padding: 1rem 2.2rem 2.5rem 2.2rem;
+    padding: 1rem 2.2rem 3rem 2.2rem;
     box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
     margin-bottom: 20rem;
 
@@ -145,10 +145,11 @@
             }
 
             .form_input_checkGroup {
-                padding: 2rem;
+                padding: 1rem;
                 position: relative;
                 background-color: $boo-gray-700;
                 border-radius: 2rem;
+                border: 1px solid transparent;
 
                 .d-flex {
                     gap: .5rem;
@@ -267,6 +268,24 @@
 }
 
 @media only screen and (max-width: 500px) {
+
+    hr {
+        display: none;
+    }
+
+    .register_form .top .title h5 {
+        font-size: 1.8rem;
+    }
+
+    .register_form .top .title img {
+        display: none;
+    }
+
+    .register_form .bottom {
+        padding: 8rem 1.5rem 2.1rem 1.5rem;
+        bottom: -9rem;
+    }
+
     .already {
         a {
             font-size: .9rem;
@@ -277,4 +296,24 @@
 
 .btn-outline-light:hover {
     border: 1px white solid !important;
+}
+
+input {
+    position: relative;
+}
+
+.custom_error {
+    position: absolute;
+    top: 6.3rem;
+    right: 2.5rem;
+    font-size: .85rem;
+    font-weight: 400;
+    letter-spacing: .2px;
+    color: $boo-secondary-dark;
+    color: #fb4848;
+}
+
+.custom_error.cousines_error {
+    top: auto;
+    bottom: -1.8rem;
 }
