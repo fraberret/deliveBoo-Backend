@@ -17,13 +17,15 @@
                     <div class="form_input">
                         <label for="name" class="form-label">{{ __('Name*') }}</label>
                         <input type="text" class="form-control form-control @error('name') is-invalid @enderror"
-                            name="name" id="name" value="{{ old('name') }}" minlength="5" maxlength="100"
+                            name="name" id="name" value="{{ old('name') }}" minlength="2" maxlength="100"
                             required />
+
                         @error('name')
                             <div class="text-danger py-2">
                                 {{ $message }}
                             </div>
                         @enderror
+                        <div class="custom_error name_error"></div>
                     </div>
 
                     <div class="form_input">
@@ -59,6 +61,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                        <div class="custom_error price_error"></div>
                     </div>
 
                     <div class="form_input mb-5 d-flex align-items-center gap-3">
@@ -115,4 +118,64 @@
             </div>
         </form>
     </div>
+
+
+    <script>
+        const name = document.getElementById('name');
+        const price = document.getElementById('price')
+
+        document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
+
+            if (validateName()) {
+                if (validatePrice()) {
+                    updateRequiredAttribute();
+                }
+            }
+
+        });
+        const nameError = document.querySelector('.custom_error.name_error');
+        const priceError = document.querySelector('.custom_error.price_error');
+
+
+        function validateName() {
+            if (name.validity.valueMissing) {
+                nameError.textContent = 'Name is required.';
+                name.style.borderColor = '#fb4848'
+                nameError.style.display = 'block';
+                return false;
+            } else if (name.validity.patternMismatch) {
+                nameError.textContent = 'Only alphanumeric characters and spaces are allowed.';
+                name.style.borderColor = '#fb4848'
+                nameError.style.display = 'block';
+                return false;
+            } else if (name.validity.tooShort || name.validity.tooLong) {
+                nameError.textContent = 'Name must be between 2 and 255 characters.';
+                name.style.borderColor = '#fb4848'
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                name.style.borderColor = ''
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validatePrice() {
+            if (price.validity.valueMissing) {
+                priceError.textContent = 'Price is required.';
+                price.style.borderColor = '#fb4848'
+                priceError.style.display = 'block';
+                return false;
+            } else if (price.validity.rangeUnderflow) {
+                priceError.textContent = 'Only positive numbers are allowed.';
+                price.style.borderColor = '#fb4848'
+                priceError.style.display = 'block';
+                return false;
+            } else {
+                name.style.borderColor = ''
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+    </script>
 @endsection
