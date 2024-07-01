@@ -8,6 +8,7 @@ return [
         "cover_image" => '/img/dishes/spaghetti-carbonara.png',
         "ingredients" => "Spaghetti Pasta, Guanciale, Eggs, Pecorino Cheese, Salt, Black pepper",
         "restaurant_id" => 1,
+        "visible" => 1
     ],
     [
         "name" => "Saltimbocca alla Romana",
@@ -16,6 +17,7 @@ return [
         "cover_image" => '/img/dishes/saltimbocca-alla-romana.png',
         "ingredients" => "Veal, Prosciutto, Fresh sage, White wine, Butter, Salt, Pepper",
         "restaurant_id" => 1,
+        "visible" => 1
     ],
     [
         "name" => "Fettuccine Alfredo",
@@ -24,6 +26,7 @@ return [
         "cover_image" => '/img/dishes/fettuccine-alfredo.png',
         "ingredients" => "Fettuccine Pasta, Butter, Parmesan Cheese",
         "restaurant_id" => 1,
+        "visible" => 1
     ],
     [
         "name" => "Cacio e Pepe",
@@ -32,6 +35,7 @@ return [
         "cover_image" => '/img/dishes/cacio-e-pepe.png',
         "ingredients" => "Spaghetti, Pecorino Romano cheese, Black pepper, Salt",
         "restaurant_id" => 1,
+        "visible" => 1
     ],
     [
         "name" => "Supplì",
@@ -40,6 +44,7 @@ return [
         "cover_image" => '/img/dishes/suppli-al-telefono.png',
         "ingredients" => "Rice, Mozzarella, Tomato sauce, Bread crumbs, Eggs, Salt, Pepper",
         "restaurant_id" => 1,
+        "visible" => 1
     ],
     [
         "name" => "Rigatoni alla Gricia",
@@ -48,6 +53,7 @@ return [
         "cover_image" => '/img/dishes/rigatoni-alla-gricia.png',
         "ingredients" => "Rigatoni, Guanciale, Pecorino Romano cheese, Black pepper, Salt",
         "restaurant_id" => 1,
+        "visible" => 0
     ],
     [
         "name" => "Pizza Margherita",
@@ -56,6 +62,7 @@ return [
         "cover_image" => '/img/dishes/margherita.png',
         "ingredients" => "Pizza Dough, Tomato Sauce, Mozzarella, Basil, Olive oil, Salt",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Casper",
@@ -64,6 +71,7 @@ return [
         "cover_image" => '/img/dishes/casper.png',
         "ingredients" => "Mozzarella fior di latte, Stracchino, Courgettes. After cooking: Speck",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Piccantina",
@@ -72,6 +80,7 @@ return [
         "cover_image" => '/img/dishes/piccantina.png',
         "ingredients" => "Mozzarella fior di latte, Friarielli, Spicy salami, Anchovies from the Cantabrian Sea",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Diavola",
@@ -80,6 +89,7 @@ return [
         "cover_image" => '/img/dishes/diavola.png',
         "ingredients" => "Tomato sauce, Fior di latte mozzarella, Spicy salami",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Capricciosa",
@@ -88,6 +98,7 @@ return [
         "cover_image" => '/img/dishes/capricciosa.png',
         "ingredients" => "Pizza Dough, Tomato Sauce, Mozzarella, Ham, Mushrooms, Artichokes, Olives",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Mortadella",
@@ -96,6 +107,7 @@ return [
         "cover_image" => '/img/dishes/mortadella.png',
         "ingredients" => "Fior di latte mozzarella, IGP Mortadella, artisanal Burrata, chopped Pistachios from Bronte",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Zermanina",
@@ -104,6 +116,7 @@ return [
         "cover_image" => '/img/dishes/zermanina.png',
         "ingredients" => "Tomato sauce, fior di latte mozzarella, scamorza, aubergines. After cooking: Parma ham",
         "restaurant_id" => 2,
+        "visible" => 0
     ],
     [
         "name" => "Pizza Parma",
@@ -112,6 +125,7 @@ return [
         "cover_image" => '/img/dishes/parma.png',
         "ingredients" => "Mozzarella fior di latte, buffalo mozzarella, fresh cherry tomatoes. After cooking: Parma ham",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Pizza Vegetariana",
@@ -120,6 +134,7 @@ return [
         "cover_image" => '/img/dishes/vegetariana.png',
         "ingredients" => "Tomato sauce, Fior di latte mozzarella, Courgettes, Aubergines, Peppers",
         "restaurant_id" => 2,
+        "visible" => 1
     ],
     [
         "name" => "Lasagna",
@@ -128,6 +143,7 @@ return [
         "cover_image" => '/img/dishes/lasagna.png',
         "ingredients" => "Lasagna noodles, Ground Beef, Tomato Sauce, Mozzarella, Ham, Parmesan Cheese, Olive Oil",
         "restaurant_id" => 3,
+        "visible" => 1
     ],
     [
         "name" => "Risotto ai Funghi",
@@ -136,6 +152,7 @@ return [
         "cover_image" => '/img/dishes/risotto-ai-funghi.png',
         "ingredients" => "Rice, Fresh Mushrooms, Olive Oil, Onion, Butter, Vegetable Broth, White Wine, Black Pepper, Fresh Parsley",
         "restaurant_id" => 3,
+        "visible" => 1
     ],
     [
         "name" => "Osso Buco",
@@ -144,6 +161,7 @@ return [
         "cover_image" => '/img/dishes/osso-buco.png',
         "ingredients" => "Veal Shanks, Onion, White Wine, Butter, Black Pepper, Flour, Olive Oil, Meat Broth",
         "restaurant_id" => 3,
+        "visible" => 0
     ],
     [
         "name" => "Risotto alla Milanese",
@@ -152,6 +170,7 @@ return [
         "cover_image" => '/img/dishes/risotto-alla-milanese.png',
         "ingredients" => "Rice, Saffron, Onion, Butter, White Wine, Chicken Broth, Parmesan Cheese",
         "restaurant_id" => 3,
+        "visible" => 1
     ],
     [
         "name" => "Tiramisu",
@@ -160,6 +179,7 @@ return [
         "cover_image" => '/img/dishes/tiramisu.png',
         "ingredients" => "Savoiardi Biscuits, Eggs, Mascarpone Cheese, Espresso Coffee, Cocoa Powder Topping",
         "restaurant_id" => 4,
+        "visible" => 1
     ],
     [
         "name" => "Panna Cotta",
@@ -168,6 +188,7 @@ return [
         "cover_image" => '/img/dishes/panna-cotta.png',
         "ingredients" => "Fresh Cream, Vanilla, Sugar, Gelatine Sheets",
         "restaurant_id" => 4,
+        "visible" => 1
     ],
     [
         "name" => "Cannoli Siciliani",
@@ -176,6 +197,7 @@ return [
         "cover_image" => '/img/dishes/cannoli-siciliani.png',
         "ingredients" => "Pastry Shells, Ricotta Cheese, Sugar, Chocolate Chips, Candied Fruit",
         "restaurant_id" => 4,
+        "visible" => 1
     ],
     [
         "name" => "Gelato",
@@ -184,6 +206,7 @@ return [
         "cover_image" => '/img/dishes/gelato.png',
         "ingredients" => "Milk, Cream, Sugar, Flavorings (e.g., Vanilla, Chocolate, Pistachio)",
         "restaurant_id" => 4,
+        "visible" => 1
     ],
     [
         "name" => "Zabaione",
@@ -192,6 +215,7 @@ return [
         "cover_image" => '/img/dishes/zabaione.png',
         "ingredients" => "Egg Yolks, Sugar, Marsala Wine",
         "restaurant_id" => 4,
+        "visible" => 0
     ],
     [
         "name" => "Bruschetta",
@@ -200,6 +224,7 @@ return [
         "cover_image" => '/img/dishes/bruschetta.png',
         "ingredients" => "Sliced Bread, Fresh Tomatoes, Basil, Olive Oil, Mozzarella, Garlic",
         "restaurant_id" => 5,
+        "visible" => 1
     ],
     [
         "name" => "Insalata Caprese",
@@ -208,6 +233,7 @@ return [
         "cover_image" => '/img/dishes/insalata-caprese.png',
         "ingredients" => "Fresh Tomatoes, Basil, Olive Oil, Mozzarella",
         "restaurant_id" => 5,
+        "visible" => 1
     ],
     [
         "name" => "Frittata di Verdure",
@@ -216,6 +242,7 @@ return [
         "cover_image" => '/img/dishes/frittata-di-verdure.png',
         "ingredients" => "Eggs, Bell Peppers, Zucchini, Onion, Olive Oil, Salt, Pepper",
         "restaurant_id" => 5,
+        "visible" => 1
     ],
     [
         "name" => "Panzanella",
@@ -224,6 +251,7 @@ return [
         "cover_image" => '/img/dishes/panzanella.png',
         "ingredients" => "Stale Bread, Tomatoes, Cucumbers, Red Onion, Basil, Olive Oil, Vinegar, Salt",
         "restaurant_id" => 5,
+        "visible" => 1
     ],
     [
         "name" => "Prosciutto e Melone",
@@ -232,6 +260,7 @@ return [
         "cover_image" => '/img/dishes/prosciutto-e-melone.png',
         "ingredients" => "Prosciutto, Cantaloupe Melon",
         "restaurant_id" => 5,
+        "visible" => 0
     ],
 
 ];

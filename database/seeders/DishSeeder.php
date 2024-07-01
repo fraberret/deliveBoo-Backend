@@ -26,6 +26,7 @@ class DishSeeder extends Seeder
             $newDish->description = $dish['description'];
             $newDish->price = $dish['price'];
             $newDish->ingredients = $dish['ingredients'];
+            $newDish->visible = $dish['visible'];
             $newDish->restaurant_id = $dish['restaurant_id'];
             $newDish->save();
         }
