@@ -8,7 +8,7 @@
         <div class="py-4">
             <h1 class="mb-0">{{ $order->restaurant->name }}</h1>
             <hr class="my-4">
-            <h2 class="my-4">{{ $order->customer_name }} {{ $order->customer_lastname }}</h2>
+            <h2 class="my-4 customer-info">{{ $order->customer_name }} {{ $order->customer_lastname }}</h2>
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-unstyled">
