@@ -172,8 +172,8 @@
                 priceError.style.display = 'block';
                 return false;
             } else {
-                name.style.borderColor = ''
-                nameError.style.display = 'none';
+                price.style.borderColor = ''
+                priceError.style.display = 'none';
                 return true;
             }
         }
