@@ -20,7 +20,7 @@
                     <div class="image"></div>
                     <div class="name">Name</div>
                     <div class="price">Price</div>
-                    <div class="visible">Visibility</div>
+                    <div class="visible mobile_hidden">Visibility</div>
                     <div class="actions"></div>
                 </div>
             @endif
