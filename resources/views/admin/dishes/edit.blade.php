@@ -28,18 +28,26 @@
                     </div>
 
                     <div class="form_input d-flex align-items-center mb-3 mt-5">
-                        <div class="me-3" style="width: 140px; aspect-ratio: 1;">
-                            @if (Str::startsWith($dish->cover_image, 'https://'))
+                        @if ($dish->cover_image)
+                            <div class="me-3" style="width: 140px; aspect-ratio: 1;">
+                                @if (Str::startsWith($dish->cover_image, 'https://'))
+                                    <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
+                                        src="{{ $dish->cover_image }}" alt="{{ $dish->name }} image">
+                                @elseif (Str::startsWith($dish->cover_image, '/img'))
+                                    <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
+                                        src="{{ asset($dish->cover_image) }}" alt="{{ $dish->name }} image">
+                                @else
+                                    <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
+                                        src="{{ asset('storage/' . $dish->cover_image) }}"
+                                        alt="{{ $dish->name }} image">
+                                @endif
+                            </div>
+                        @else
+                            <div class="me-3" style="width: 140px; aspect-ratio: 1;">
                                 <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
-                                    src="{{ $dish->cover_image }}" alt="{{ $dish->name }} image">
-                            @elseif (Str::startsWith($dish->cover_image, '/img'))
-                                <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
-                                    src="{{ asset($dish->cover_image) }}" alt="{{ $dish->name }} image">
-                            @else
-                                <img class="rounded-circle" style="max-width: 100%; object-fit: cover; height: 100%;"
-                                    src="{{ asset('storage/' . $dish->cover_image) }}" alt="{{ $dish->name }} image">
-                            @endif
-                        </div>
+                                    src="{{ asset('img/default.png') }}" alt="{{ $dish->name }} image">
+                            </div>
+                        @endif
 
                         <div style="margin-top: 0;" class="form_input">
                             <label for="cover_image" class="form-label">{{ __('Cover Image') }}</label>
