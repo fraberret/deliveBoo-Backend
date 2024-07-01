@@ -173,6 +173,33 @@ return [
         "visible" => 1
     ],
     [
+        "name" => "Polenta with Sausage",
+        "description" => "Creamy polenta served with Italian sausages and a rich tomato sauce.",
+        "price" => 14.00,
+        "cover_image" => '/img/dishes/polenta-with-sausage.png',
+        "ingredients" => "Polenta, Italian Sausage, Tomato Sauce, Olive Oil, Basil",
+        "restaurant_id" => 3,
+        "visible" => 1
+    ],
+    [
+        "name" => "Florentine Steak",
+        "description" => "Grilled T-bone steak Florentine style, served with lemon and olive oil.",
+        "price" => 24.00,
+        "cover_image" => '/img/dishes/florentine-steak.png',
+        "ingredients" => "T-bone Steak, Olive Oil, Lemon, Rosemary, Black Pepper, Salt",
+        "restaurant_id" => 3,
+        "visible" => 1
+    ],
+    [
+        "name" => "Arancini",
+        "description" => "Crispy rice balls filled with ragu, peas, and mozzarella, served with marinara sauce.",
+        "price" => 9.50,
+        "cover_image" => '/img/dishes/arancini.png',
+        "ingredients" => "Rice, Ragu, Peas, Mozzarella, Breadcrumbs, Eggs, Marinara Sauce",
+        "restaurant_id" => 3,
+        "visible" => 1
+    ],
+    [
         "name" => "Tiramisu",
         "description" => "Classic Italian dessert made with layers of coffee-soaked ladyfingers, mascarpone cheese, and cocoa.",
         "price" => 7.00,
