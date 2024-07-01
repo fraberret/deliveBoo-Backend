@@ -1,5 +1,6 @@
 @use './variables' as *;
 
+
 .img.not-found {
     text-align: end;
     margin-right: 1rem;
@@ -9,6 +10,7 @@
     transform: scaleX(-1);
     position: absolute;
     right: 1rem;
+    bottom: 3rem;
 }
 
 a.not-found{

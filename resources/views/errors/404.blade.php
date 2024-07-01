@@ -30,7 +30,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container not-found">
         <div class="error mt-2">
             <h1 class="not-found">
                 404
