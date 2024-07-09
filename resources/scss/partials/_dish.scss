@@ -1,0 +1,398 @@
+@use './variables' as *;
+
+// banner buttons ----------------------------------------> 
+.actions.single_dish {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+
+    img {
+        margin-right: .5rem;
+        padding-bottom: .1rem;
+    }
+
+    .edit {
+        background-color: $boo-lighter;
+        color: $boo-primary;
+        border-color: $boo-gray-400;
+
+        .white_icon {
+            display: none;
+        }
+
+        .purple_icon {
+            display: block;
+        }
+
+        &::after {
+            background-color: $boo-primary;
+        }
+
+        &:hover {
+            border-color: $boo-primary;
+            color: $boo-lighter;
+
+            .white_icon {
+                display: block;
+            }
+
+            .purple_icon {
+                display: none;
+            }
+        }
+    }
+
+    .delete {
+        background-color: $boo-gray-700;
+        border-color: $boo-gray-700;
+
+        img {
+            padding-bottom: .15rem;
+
+        }
+
+        &::after {
+            background-color: $boo-primary;
+        }
+
+        &:hover {
+            color: $boo-lighter;
+            border-color: $boo-primary;
+        }
+    }
+}
+
+// banner buttons ----------------------------------------> 
+.dish_card {
+    margin-bottom: 15rem;
+    width: 100%;
+    background-color: $boo-gray-800;
+    padding: 2.6rem 5rem 2.6rem 0;
+    border-radius: 2rem;
+    color: $boo-lighter;
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.381);
+    position: relative;
+
+    .dish {
+        padding: .7rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .9rem;
+
+        .image {
+            width: 0%;
+
+            .image_circle {
+                width: 45%;
+                position: absolute;
+                top: 2rem;
+                transform: translateX(-40px);
+                background-color: $boo-gray-500;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.381);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 2s ease;
+
+                    &:hover {
+                        transform: rotate(45deg);
+                    }
+                }
+
+            }
+
+            .price_circle {
+                position: absolute;
+                background-color: $boo-secondary-dark;
+                width: 100px;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 4rem;
+                left: 30%;
+                border-radius: 50%;
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.381);
+
+                .price {
+                    text-align: center;
+                    width: 100px;
+                    display: block;
+
+                    h7 {
+                        color: $boo-gray-800;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
+
+                    span {
+                        color: $boo-gray-800;
+                    }
+                }
+            }
+        }
+
+        .text {
+            margin-left: auto;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+            // gap: 4rem;
+            justify-content: space-between;
+
+            .description {
+
+                h6 {
+                    letter-spacing: 2.25px;
+                    color: $boo-primary;
+                    text-transform: uppercase;
+                    margin-bottom: 1rem;
+                }
+
+                .goback_btn {
+                    background-color: $boo-darker;
+                    border-color: $boo-gray-800;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 3.2rem;
+                    height: 3.2rem;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 1;
+                    overflow: hidden;
+
+                    &::before {
+                        position: absolute;
+                        transform: translate(-80%, 80%);
+                        content: '';
+                        background-color: $boo-primary;
+                        width: 4rem;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                        z-index: -1;
+                        transition: transform .25s ease, filter .25s ease;
+                        filter: blur(5px);
+                    }
+
+                    &:hover::before {
+                        transform: translate(0%, 0%);
+                        filter: blur(0px);
+                    }
+
+                }
+
+                p {
+                    font-size: 1rem;
+                    font-weight: 300;
+                    padding-right: 6rem;
+                    line-height: 1.6rem;
+                }
+            }
+
+            .visible {
+                display: flex;
+                gap: .8rem;
+                align-items: center;
+
+                small {
+                    color: $boo-gray-500;
+                }
+
+                .visible_circle,
+                .non_visible_circle {
+                    width: 25px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $boo-darker;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 8px;
+                        aspect-ratio: 1;
+                        border-radius: 50%;
+                    }
+                }
+
+                .visible_circle {
+                    &::after {
+                        filter: blur(1px);
+                        background-color: rgb(99, 235, 31);
+                    }
+                }
+
+                .non_visible_circle {
+                    &::after {
+                        filter: blur(1px);
+                        background-color: $boo-gray-500;
+                    }
+                }
+            }
+
+            .info_box {
+                border-bottom: 1px solid $boo-gray-700;
+                border-top: 1px solid $boo-gray-700;
+                display: flex;
+                padding: 1.5rem 0;
+                justify-content: space-between;
+
+                .restaurant {
+                    display: flex;
+                    align-items: center;
+
+                    .restaurant_image {
+                        width: 60px;
+                        aspect-ratio: 1;
+                        background-color: $boo-gray-400;
+                        border-radius: 50%;
+                        overflow: hidden;
+
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                        }
+                    }
+
+                    .restaurant_text {
+                        padding-left: 1rem;
+
+                        small {
+                            color: $boo-gray-500;
+                        }
+
+                        h6 {
+                            font-size: .9rem;
+                        }
+                    }
+                }
+
+                .ratings {
+                    display: flex;
+                    align-items: center;
+                    text-align: end;
+
+                    .stars {
+                        display: flex;
+                        gap: .5rem;
+                        justify-content: end;
+                    }
+
+                    small {
+                        margin: 0 1rem;
+                        padding-top: .3rem;
+                        color: $boo-gray-400;
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
+// bottom drawer ----------------------------------------> 
+
+.dish_card .bottom {
+    background-color: $boo-darker;
+    width: 100%;
+    min-height: 250px;
+    z-index: -1;
+    transform: translateY(-10rem);
+    // transform: translateY(-2rem);
+    border-radius: 2rem;
+    position: absolute;
+    left: 0;
+    padding: 2.6rem 5rem 2rem 0;
+    padding-top: 7.2rem;
+    transition: transform .25s ease;
+    display: flex;
+
+    .ingredients {
+        margin-left: auto;
+        width: 50%;
+        transform: translateY(-3rem);
+
+        h6 {
+            letter-spacing: 2.25px;
+            color: $boo-primary;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: $boo-gray-600;
+            font-size: .85rem;
+            line-height: 1.2rem;
+            padding-right: 4rem;
+        }
+    }
+}
+
+.dish_card:hover .bottom {
+    transform: translateY(-2rem);
+
+    .ingredients {
+        transform: translateY(0rem);
+    }
+}
+
+// media queries ----------------------------------------> 
+
+@media screen and (max-width: 980px) {
+
+    .dish_card {
+        padding: 24rem 2.6rem 2.6rem 2.6rem;
+
+        .dish .image {
+
+            .image_circle {
+                top: 2.6rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .price_circle {
+                top: 2rem;
+                left: 60%;
+            }
+        }
+
+        .dish .text {
+            width: 100%;
+        }
+    }
+
+    .dish_card .bottom {
+        padding: 8rem 2.6rem 2rem 2.6rem;
+
+        transform: translateY(-2rem);
+
+        .ingredients {
+            width: 100%;
+            transform: translateY(0rem);
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+
+    .dish_card {
+        padding: 18rem 2.6rem 2.6rem 2.6rem;
+
+    }
+}

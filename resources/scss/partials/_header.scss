@@ -1,0 +1,91 @@
+@use './variables' as *;
+
+
+.nav_link {
+    color: $boo-gray-300;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-size: .9rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+        color: $boo-gray-500;
+    }
+
+    &::after {
+        content: '';
+        top: 2rem;
+        position: absolute;
+        width: 4px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: transparent;
+        transition: background-color .2s ease;
+    }
+
+    &:hover::after {
+        background-color: $boo-gray-500;
+    }
+}
+
+.custom-hover {
+    font-weight: 500;
+    font-size: .9rem;
+    color: $boo-gray-400 !important;
+    font-family: "Poppins", sans-serif;
+}
+
+.custom-hover:hover {
+    background-color: #212529 !important;
+    color: $boo-primary !important;
+}
+
+.current_page,
+.current_page:hover {
+    color: $boo-primary;
+    color: $boo-primary;
+
+    &:hover::after,
+    &::after {
+        background-color: $boo-primary;
+    }
+}
+
+.user_nav_link {
+    color: $boo-gray-300;
+    font-weight: 600;
+    letter-spacing: .5px;
+    font-size: .85rem;
+    text-transform: capitalize;
+
+    &:hover {
+        color: $boo-gray-500;
+    }
+}
+
+.user_nav_link::after {
+    color: $boo-primary;
+}
+
+.auth_name {
+    color: $boo-gray-400;
+    margin-right: .5rem;
+}
+
+// .arrow_down {
+//     fill: $boo-primary;
+// }
+
+// .auth_avatar {
+
+
+// .auth_avatar_circle {
+//     width: 40px;
+//     aspect-ratio: 1;
+//     border-radius: 50%;
+//     background-color: $boo-gray-500;
+// }
+
+// }

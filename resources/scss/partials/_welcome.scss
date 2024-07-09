@@ -1,0 +1,125 @@
+@use './variables' as *;
+
+.welcome {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // position: relative;
+    flex-direction: column;
+    gap: 4rem;
+
+    .gif {
+        // position: absolute;
+        top: 3rem;
+        width: 100%;
+        margin-top: -15vh;
+    }
+
+    .text {
+
+        text-align: center;
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 200;
+            color: $boo-gray-600;
+        }
+
+    }
+
+    p {
+        color: $boo-lighter;
+        // padding-inline: 3rem;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 3rem;
+    }
+
+    .actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn_primary {
+            background-color: $boo-primary;
+            padding-inline: 2.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3.5rem;
+            color: $boo-lighter;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border-color: $boo-primary;
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 200px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: $boo-darker;
+                z-index: -1;
+                transform: translate(-100%, 100%) scale(.5);
+                transition: transform .4s ease;
+            }
+
+            &:hover::after {
+                transform: translate(0%, 0%) scale(1);
+            }
+
+            &:hover {
+                border-color: $boo-gray-700;
+            }
+        }
+
+        .btn_dark {
+            background-color: $boo-gray-600;
+            padding-inline: 2rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3.5rem;
+            color: $boo-lighter;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border-color: $boo-gray-600;
+
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 200px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: $boo-darker;
+                z-index: -1;
+                transform: translate(-100%, 100%) scale(.5);
+                transition: transform .4s ease;
+            }
+
+            &:hover::after {
+                transform: translate(0%, 0%) scale(1);
+            }
+
+            &:hover {
+                border-color: $boo-gray-700;
+            }
+        }
+    }
+
+}

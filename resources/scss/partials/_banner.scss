@@ -1,0 +1,95 @@
+@use './variables' as *;
+
+.banner {
+    background-color: $boo-secondary-light;
+    background-color: #3a3a3a;
+    // background-color: #373737;
+    width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 2rem;
+    padding: 4.8rem 4.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform .45s ease;
+    transform: translateY(0px) scale(1);
+
+    .text {
+        h2 {
+            font-family: "Rubik", sans-serif;
+            font-size: 2.7rem;
+            letter-spacing: .5px;
+            line-height: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0;
+            width: 60%;
+        }
+
+        h6 {
+            letter-spacing: 2.25px;
+            color: $boo-primary;
+            text-transform: uppercase;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-7px) scale(1.04);
+    }
+
+    .actions {
+        .btn {
+            background-color: $boo-primary;
+            padding-inline: 2.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3.5rem;
+            color: $boo-lighter;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border-color: $boo-primary;
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 200px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: $boo-gray-700;
+                z-index: -1;
+                transform: translate(-100%, 100%) scale(.5);
+                transition: transform .4s ease;
+            }
+
+            &:hover::after {
+                transform: translate(0%, 0%) scale(1);
+            }
+
+            &:hover {
+                border-color: $boo-gray-700;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .banner {
+        flex-direction: column;
+        text-align: center;
+
+        .text {
+            margin-bottom: 1.8rem;
+
+            h2 {
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+        &:hover {
+            transform: translateY(0px) scale(1);
+        }
+    }
+}
